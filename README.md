@@ -69,3 +69,6 @@
 
 # 画面推移図
 Figma URL：https://www.figma.com/file/wqLqj8RVZpQrRhGesPe8Ec/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?type=design&node-id=0%3A1&mode=design&t=hjroMIFOay3tew5V-1
+
+# ER図
+[![Image from Gyazo](https://i.gyazo.com/d8cfa6742fe2e2e98a1b673f0cfb70ee.png)](https://gyazo.com/d8cfa6742fe2e2e98a1b673f0cfb70ee)
