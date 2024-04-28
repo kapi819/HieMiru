@@ -71,4 +71,4 @@
 Figma URL：https://www.figma.com/file/wqLqj8RVZpQrRhGesPe8Ec/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?type=design&node-id=0%3A1&mode=design&t=hjroMIFOay3tew5V-1
 
 # ER図
-[![Image from Gyazo](https://i.gyazo.com/4b30e2a071e38f339714a41ea5b07b0d.png)](https://gyazo.com/4b30e2a071e38f339714a41ea5b07b0d)
+[![Image from Gyazo](https://i.gyazo.com/53d81a48e2cfffb1beb9bf7412b9c7a9.png)](https://gyazo.com/53d81a48e2cfffb1beb9bf7412b9c7a9)
