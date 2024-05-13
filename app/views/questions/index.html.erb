@@ -1,13 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-lg-8 mx-auto">
+    <!--<div class="col-md-10 col-lg-8 mx-auto">
       <div class="text-center">
         <p id="start-description">
           この診断では自身の冷え性度を知ることができます。<br>質問は合計で6問です
         </p>
         <button type="button" class="btn btn-primary" id="start-questions">診断を始める</button>
+      </div>-->
+      <div class="container mx-auto text-center">
+        <%= form_with url:"#", scope: :answer, method: :post, data: { turbo: false } do |f| %>
+          <% @questions.each_with_index do |question, index| %>
+            <div id="question_<%= index+1 %>">
+              <h2 class="text-center">Q<%=index+1%></h2>
+              <div class="container mx-auto">
+                <p class=""><%= question.question_title %></p>
+                <div class="flex flex-col">
+                  <% question.choices.each do |choice| %>
+                    <%= f.radio_button "answer_#{question.id}", class:'hidden radio', data: { question_id: index + 1 } %>
+                    <%= f.label nil, choice, class: '', for: "calculate_answer_#{question.id}_#{score}" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      </div>
-    </div>
+    <!--</div>-->
   </div>
 </div>
