@@ -16,13 +16,16 @@
                 <p class=""><%= question.question_title %></p>
                 <div class="flex flex-col">
                   <% question.choices.each do |choice| %>
-                    <%= f.radio_button "answer_#{question.id}", class:'hidden radio', data: { question_id: index + 1 } %>
-                    <%= f.label nil, choice, class: '', for: "calculate_answer_#{question.id}_#{score}" %>
+                    <%= f.radio_button "answers[#{question.id}]", choice.id, id: "answer_#{question.id}_#{choice.id}", class:'hidden radio', data: { question_id: index + 1 } %>
+                    <%= f.label "answer_#{question.id}_#{choice.id}", choice.question_body, class: '' %>
                   <% end %>
                 </div>
               </div>
             </div>
           <% end %>
+          <button type="button" data-action="previous-question" id="previous_button" class="hidden">戻る</button>
+          <button type="button" data-action="next-question" id="next_button" class="hidden">次へ</button>
+          <%= f.submit "結果", id: "submit-button", class: 'hidden'>
         <% end %>
       </div>
     <!--</div>-->
