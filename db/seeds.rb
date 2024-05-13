@@ -7,3 +7,33 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# 診断の質問文を作成
+Question.create!([
+  { question_title: "いつもの手足の冷える状態は？" },
+  { question_title: "いつもの汗のかき方は？" },
+  { question_title: "いつもの食事の量は？" },
+  { question_title: "寒い場所にいるとき、どこに一番冷えを感じる？" },
+  { question_title: "冷えたときに起こりやすい症状は？" },
+  { question_title: "わきで測る体温は？" }
+])
+
+Choice.create!([
+  { question_body: "手と足が冷える", question_type: :A, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
+  { question_body: "足は冷えるが手は温かい", question_type: :B, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
+  { question_body: "手も足もどちらも温かい", question_type: :C, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
+  { question_body: "汗はあまりかかない", question_type: :A, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
+  { question_body: "上半身に汗をかきやすい", question_type: :B, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
+  { question_body: "全身に汗をかきやすく、冷えやすい", question_type: :C, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
+  { question_body: "少なめだと思う", question_type: :A, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
+  { question_body: "普通だと思う", question_type: :B, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
+  { question_body: "多めだと思う", question_type: :C, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
+  { question_body: "手足の指先", question_type: :A, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
+  { question_body: "足先やふくらはぎ", question_type: :B, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
+  { question_body: "下腹部や二の腕", question_type: :C, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
+  { question_body: "頭痛や不眠", question_type: :A, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
+  { question_body: "顔のほてり", question_type: :B, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
+  { question_body: "お腹の張りやガス貯留", question_type: :C, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
+  { question_body: "36.2℃より高い", question_type: :A, question_id: Question.find_by(question_title: "わきで測る体温は？").id },
+  { question_body: "36.2℃以下", question_type: :B, question_id: Question.find_by(question_title: "わきで測る体温は？").id },
+])
