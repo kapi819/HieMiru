@@ -9,7 +9,7 @@
 #   end
 
 # 診断の質問文を作成
-Question.create!([
+questions = Question.create!([
   { question_title: "いつもの手足の冷える状態は？" },
   { question_title: "いつもの汗のかき方は？" },
   { question_title: "いつもの食事の量は？" },
@@ -19,21 +19,45 @@ Question.create!([
 ])
 
 Choice.create!([
-  { question_body: "手と足が冷える", question_type: :A, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
-  { question_body: "足は冷えるが手は温かい", question_type: :B, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
-  { question_body: "手も足もどちらも温かい", question_type: :C, question_id: Question.find_by(question_title: "いつもの手足の冷える状態は？").id },
-  { question_body: "汗はあまりかかない", question_type: :A, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
-  { question_body: "上半身に汗をかきやすい", question_type: :B, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
-  { question_body: "全身に汗をかきやすく、冷えやすい", question_type: :C, question_id: Question.find_by(question_title: "いつもの汗のかき方は？").id },
-  { question_body: "少なめだと思う", question_type: :A, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
-  { question_body: "普通だと思う", question_type: :B, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
-  { question_body: "多めだと思う", question_type: :C, question_id: Question.find_by(question_title: "いつもの食事の量は？").id },
-  { question_body: "手足の指先", question_type: :A, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
-  { question_body: "足先やふくらはぎ", question_type: :B, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
-  { question_body: "下腹部や二の腕", question_type: :C, question_id: Question.find_by(question_title: "寒い場所にいるとき、どこに一番冷えを感じる？").id },
-  { question_body: "頭痛や不眠", question_type: :A, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
-  { question_body: "顔のほてり", question_type: :B, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
-  { question_body: "お腹の張りやガス貯留", question_type: :C, question_id: Question.find_by(question_title: "冷えたときに起こりやすい症状は？").id },
-  { question_body: "36.2℃より高い", question_type: :A, question_id: Question.find_by(question_title: "わきで測る体温は？").id },
-  { question_body: "36.2℃以下", question_type: :B, question_id: Question.find_by(question_title: "わきで測る体温は？").id },
+  { question_body: "手と足が冷える", question_type: 0, question_id: questions[0].id },
+  { question_body: "足は冷えるが手は温かい", question_type: 1, question_id: questions[0].id },
+  { question_body: "手も足もどちらも温かい", question_type: 2, question_id: questions[0].id },
+  { question_body: "汗はあまりかかない", question_type: 0, question_id: questions[1].id },
+  { question_body: "上半身に汗をかきやすい", question_type: 1, question_id: questions[1].id },
+  { question_body: "全身に汗をかきやすく、冷えやすい", question_type: 2, question_id: questions[1].id },
+  { question_body: "少なめだと思う", question_type: 0, question_id: questions[2].id },
+  { question_body: "普通だと思う", question_type: 1, question_id: questions[2].id },
+  { question_body: "多めだと思う", question_type: 2, question_id: questions[2].id },
+  { question_body: "手足の指先", question_type: 0, question_id: questions[3].id },
+  { question_body: "足先やふくらはぎ", question_type: 1, question_id: questions[3].id },
+  { question_body: "下腹部や二の腕", question_type: 2, question_id: questions[3].id },
+  { question_body: "頭痛や不眠", question_type: 0, question_id: questions[4].id },
+  { question_body: "顔のほてり", question_type: 1, question_id: questions[4].id },
+  { question_body: "お腹の張りやガス貯留", question_type: 2, question_id: questions[4].id },
+  { question_body: "36.2℃より高い", question_type: 0, question_id: questions[5].id },
+  { question_body: "36.2℃以下", question_type: 1, question_id: questions[5].id },
+])
+
+#診断の症状を作成
+cold_symptom.create!([
+  { symptom_type: 0,
+    symptom_title: "手足の末端が冷える典型的なタイプの冷え性"
+    symptom_body: "ストレスによる自律神経の乱れ・運動不足による筋肉量の低下・過度なダイエットによる栄養不足を原因として、体の中で熱を充分に作ることができていないことが出来ない状態です。" 
+    solution: "運動"
+    image_url: "logo.png"}
+  { symptom_type: 1,
+    symptom_title: "体の内部（内臓）が冷えるタイプの冷え性"
+    symptom_body: "胃腸が弱い・暴飲暴食・ストレスで胃腸が弱っていることを原因として、体の中で熱を充分に作ることができていないことが出来ない状態です。" 
+    solution: "食事"
+    image_url: "logo.png"}
+  { symptom_type: 2,
+    symptom_title: "主に下半身が冷えるタイプの冷え性"
+    symptom_body: "座っている時間が長い・骨盤の歪み・過度なストレスを原因として、下半身の血行が悪化し、代謝が悪くなっている状態です。" 
+    solution: "着るもの"
+    image_url: "logo.png"}
+  { symptom_type: 3,
+    symptom_title: "常に低体温で1年中寒さを感じるタイプの冷え性"
+    symptom_body: "乱れた生活リズム・寝不足や過労・過度なストレスを原因として、体全体の機能が低下し、体の中で熱を充分に作ることができていないことが出来ない状態です。" 
+    solution: "食事"
+    image_url: "logo.png"}
 ])
