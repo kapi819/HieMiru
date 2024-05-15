@@ -28,4 +28,26 @@ class User < ApplicationRecord
     self.raw_info = raw_info.to_json
     self.save!
   end
+
+  def diagnose
+    a_count = answers.joins(:choice).where(choices: { question_type: 0 }).count
+    b_count = answers.joins(:choice).where(choices: { question_type: 1 }).count
+    c_count = answers.joins(:choice).where(choices: { question_type: 2 }).count
+
+    diagnosis = if a_count >= b_count && a_count >= c_count
+                   "末端冷え性"
+                elsif b_count >= a_count && b_count >= c_count
+                   "下半身冷え性"
+                elsif c_count >= a_count && c_count >= b_count
+                   "内臓冷え性"
+                else
+                    "全身冷え性"
+                end
+    
+    if a_count >= 3 && answers.joins(:choice).where(choices: { question_body: "36.2℃より高い" }).exists?
+      diagnosis = "全身冷え性"
+    end
+
+    diagnosis
+  end
 end
