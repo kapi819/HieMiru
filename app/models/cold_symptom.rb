@@ -6,5 +6,5 @@ class ColdSymptom < ApplicationRecord
   validates :solution, presence: true
   validates :image_url, presence: true
   validates :symptom_type, presence: true, numericality: { only_integer: true }
-  enum question_type: { "末端冷え性": 0, "下半身冷え性": 1, "内臓冷え性": 2, "全身冷え性": 3 }
+  enum symptom_type: { peripheral: 0, lower: 1, internal: 2, systemic: 3 }
 end
