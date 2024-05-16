@@ -45,7 +45,7 @@ class User < ApplicationRecord
                 end
     
     if a_count >= 3 && answers.joins(:choice).where(choices: { question_body: "36.2℃より高い" }).exists?
-      diagnosis = "全身冷え性"
+      ColdSymptom.symptom_types[:systemic]
     end
 
     diagnosis
