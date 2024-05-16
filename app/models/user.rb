@@ -35,17 +35,17 @@ class User < ApplicationRecord
     c_count = answers.joins(:choice).where(choices: { question_type: 2 }).count
 
     diagnosis = if a_count >= b_count && a_count >= c_count
-                   "末端冷え性"
+                  ColdSymptom.symptom_types[:peripheral]
                 elsif b_count >= a_count && b_count >= c_count
-                   "下半身冷え性"
+                  ColdSymptom.symptom_types[:lower]
                 elsif c_count >= a_count && c_count >= b_count
-                   "内臓冷え性"
+                  ColdSymptom.symptom_types[:internal]
                 else
-                    "全身冷え性"
+                  ColdSymptom.symptom_types[:systemic]
                 end
     
     if a_count >= 3 && answers.joins(:choice).where(choices: { question_body: "36.2℃より高い" }).exists?
-      diagnosis = "全身冷え性"
+      ColdSymptom.symptom_types[:systemic]
     end
 
     diagnosis

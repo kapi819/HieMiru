@@ -1,0 +1,2 @@
+module ColdSymptomsHelper
+end

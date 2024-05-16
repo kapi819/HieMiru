@@ -5,9 +5,7 @@ class QuestionsController < ApplicationController
     @choices = Choice.all
   end
 
-  def calculate
-  end
-
   def result
+    @user = User.find(params[:user_id])
   end
 end
