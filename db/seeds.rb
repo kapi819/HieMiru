@@ -39,14 +39,14 @@ Choice.create!([
 ])
 
 # ユーザーの作成
-user1 = User.find_or_create_by!(
+user1 = User.create!(
   name: "John Doe",
   email: "john.doe@example.com",
   password: "password",
   password_confirmation: "password"
 )
 
-user2 = User.find_or_create_by!(
+user2 = User.create!(
   name: "Jane Smith",
   email: "jane.smith@example.com",
   password: "password",
