@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    omniauth_callbacks: "omniauth_callbacks"
+    omniauth_callbacks: "omniauth_callbacks",
+    sessions: 'users/sessions'
   }
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
   root 'staticpages#top'
-  resources :questions, only: [:index]
-  resources :cold_symptoms, only: [:show]
+  resources :questions, only: [:index, :create] do
+    collection do
+      get 'result'
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
