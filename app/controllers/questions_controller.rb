@@ -45,8 +45,8 @@ class QuestionsController < ApplicationController
     b_count = answers.values.count { |choice_id| Choice.find(choice_id).question_type == "B" }
     c_count = answers.values.count { |choice_id| Choice.find(choice_id).question_type == "C" }
 
-    if a_count >= 3 && answers.values.any? { |choice_id| Choice.find(choice_id).question_body == "36.2℃以下" }
-      ColdSymptom.symptom_types[:systemic]
+    if answers.values.any? { |choice_id| Choice.find(choice_id).question_body == "36.2℃以下" }
+      diagnosis = ColdSymptom.symptom_types[:systemic]
     else
       diagnosis = if a_count >= b_count && a_count >= c_count
                     ColdSymptom.symptom_types[:peripheral]

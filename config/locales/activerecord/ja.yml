@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      cold_symptom:
+        symptom_type:
+          peripheral: "末端冷え性"
+          lower: "下半身冷え性"
+          internal: "内臓冷え性"
+          systemic: "全身冷え性"
+          

@@ -2,8 +2,8 @@
   <div class="top-wrapper">
     <div class="col-md-10 col-lg-8 mx-auto">
       <h2>診断結果</h2>
-      <p>診断結果: <%= ColdSymptom.symptom_types.key(@diagnosis) %></p>
       <% cold_symptom = ColdSymptom.find_by(symptom_type: @diagnosis) %>
+      <p>診断結果: <%= @cold_symptom.localized_symptom_type %></p>
       <p><%= @cold_symptom.symptom_title %></p>
       <p><%= @cold_symptom.symptom_body %></p>
       <%= image_tag @cold_symptom.image_url, style: 'max-height: 300px; width: auto;' %>
