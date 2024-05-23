@@ -11,10 +11,10 @@
         </div>
         <div class="container mx-auto text-center">
           <%= form_with url: questions_path, method: :post, data: { turbo: false } do |f| %>
-            <div class="error-message hidden px-10 py-2 mb-10 mx-10 text-sm" id="error_message">選択してください</div>
+          <div class="error-message hidden px-10 py-2 mb-10 mx-10 text-sm" id="error_message">選択してください</div>
             <% @questions.each_with_index do |question, index| %>
-              <div id="question_<%= index+1 %>", class="hidden">
-                <h2 class="text-center">Q<%=index+1%></h2>
+              <div id="question_<%= index + 1 %>" class="hidden">
+                <h2 class="text-center">Q<%= index + 1 %></h2>
                 <div class="container mx-auto">
                   <p class=""><%= question.question_title %></p>
                   <div class="flex flex-col">
