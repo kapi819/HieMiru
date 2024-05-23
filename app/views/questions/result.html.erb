@@ -1,9 +1,10 @@
+<% content_for( :title, t('.title'))%>
 <div class="container">
   <div class="top-wrapper">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h2>診断結果</h2>
+      <h2><%= t('.title') %></h2>
       <% cold_symptom = ColdSymptom.find_by(symptom_type: @diagnosis) %>
-      <p>診断結果: <%= @cold_symptom.localized_symptom_type %></p>
+      <p><%= t('.title') %>: <%= @cold_symptom.localized_symptom_type %></p>
       <p><%= @cold_symptom.symptom_title %></p>
       <p><%= @cold_symptom.symptom_body %></p>
       <%= image_tag @cold_symptom.image_url, style: 'max-height: 300px; width: auto;' %>
