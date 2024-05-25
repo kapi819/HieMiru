@@ -22,7 +22,8 @@ class QuestionsController < ApplicationController
     else
       answers = session[:answers]
       if answers
-        @diagnosis = diagnose_from_answers(answers)
+        choice_ids = answers.values
+        @diagnosis = User.diagnose_from_choice_ids(choice_ids)
       else
         redirect_to root_path, alert: '診断を最初からやり直してください。'
       end
@@ -38,28 +39,6 @@ class QuestionsController < ApplicationController
 
   def answers_params
     params.require(:answers).permit!.to_h
-  end
-
-  def diagnose_from_answers(answers)
-    a_count = answers.values.count { |choice_id| Choice.find(choice_id).question_type == "A" }
-    b_count = answers.values.count { |choice_id| Choice.find(choice_id).question_type == "B" }
-    c_count = answers.values.count { |choice_id| Choice.find(choice_id).question_type == "C" }
-
-    if answers.values.any? { |choice_id| Choice.find(choice_id).question_body == "36.2℃以下" }
-      diagnosis = ColdSymptom.symptom_types[:systemic]
-    else
-      diagnosis = if a_count >= b_count && a_count >= c_count
-                    ColdSymptom.symptom_types[:peripheral]
-                  elsif b_count >= a_count && b_count >= c_count
-                    ColdSymptom.symptom_types[:lower]
-                  elsif c_count >= a_count && c_count >= b_count
-                    ColdSymptom.symptom_types[:internal]
-                  else
-                    ColdSymptom.symptom_types[:systemic]
-                  end
-    end
-    diagnosis
-    
   end
 
   def save_answers_to_db(user, answers)
