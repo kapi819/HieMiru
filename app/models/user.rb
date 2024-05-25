@@ -28,4 +28,27 @@ class User < ApplicationRecord
     self.raw_info = raw_info.to_json
     self.save!
   end
+
+  def diagnose
+    choice_ids = self.answers.pluck(:choice_id)
+    self.class.diagnose_from_choice_ids(choice_ids)
+  end
+
+  def self.diagnose_from_choice_ids(choice_ids)
+    choices = Choice.where(id: choice_ids).pluck(:id, :question_type, :question_body)
+
+    a_count = choices.count { |choice| choice[1] == "A" }
+    b_count = choices.count { |choice| choice[1] == "B" }
+    c_count = choices.count { |choice| choice[1] == "C" }
+
+    if a_count >= b_count && a_count >= c_count
+      ColdSymptom.symptom_types[:peripheral]
+    elsif b_count >= a_count && b_count >= c_count
+      ColdSymptom.symptom_types[:internal]
+    elsif c_count >= a_count && c_count >= b_count
+      ColdSymptom.symptom_types[:lower]
+    else
+      ColdSymptom.symptom_types[:systemic]
+    end
+  end
 end

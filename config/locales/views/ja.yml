@@ -4,3 +4,6 @@ ja:
       title: 診断
     result:
       title: 診断結果
+  users:
+    show:
+      title: マイページ
