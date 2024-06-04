@@ -40,12 +40,15 @@ class User < ApplicationRecord
     a_count = choices.count { |choice| choice[1] == "A" }
     b_count = choices.count { |choice| choice[1] == "B" }
     c_count = choices.count { |choice| choice[1] == "C" }
+    d_count = choices.count { |choice| choice[2] == "36.2℃以下" }
 
-    if a_count >= b_count && a_count >= c_count
+    if a_count > b_count && a_count > c_count && d_count > 0
+      ColdSymptom.symptom_types[:systemic]
+    elsif a_count > b_count && a_count > c_count
       ColdSymptom.symptom_types[:peripheral]
-    elsif b_count >= a_count && b_count >= c_count
+    elsif b_count > a_count && b_count > c_count
       ColdSymptom.symptom_types[:internal]
-    elsif c_count >= a_count && c_count >= b_count
+    elsif c_count > a_count && c_count > b_count
       ColdSymptom.symptom_types[:lower]
     else
       ColdSymptom.symptom_types[:systemic]
