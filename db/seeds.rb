@@ -18,6 +18,7 @@ questions = Question.create!([
   { question_title: "わきで測る体温は？" }
 ])
 
+# 診断の選択肢を作成
 Choice.create!([
   { question_body: "手と足が冷える", question_type: 0, question_id: questions[0].id },
   { question_body: "足は冷えるが手は温かい", question_type: 1, question_id: questions[0].id },
