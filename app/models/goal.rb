@@ -3,5 +3,5 @@ class Goal < ApplicationRecord
   belongs_to :cold_symptom
 
   validates :goal_body, presence: true
-  validates :count, presence: ture
+  validates :count, presence: true
 end
