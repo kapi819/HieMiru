@@ -30,6 +30,8 @@ class QuestionsController < ApplicationController
     end
 
     @cold_symptom = ColdSymptom.find_by(symptom_type: @diagnosis)
+    reset_answers_and_clear_user_data(current_user)
+
     unless @cold_symptom
       redirect_to root_path, alert: '診断結果が見つかりません。最初からやり直してください。'
     end
@@ -45,5 +47,10 @@ class QuestionsController < ApplicationController
     answers.each do |question_id, choice_id|
       Answer.create(user_id: user.id, question_id: question_id, choice_id: choice_id)
     end
+  end
+
+  def reset_answers_and_clear_user_data(user)
+    user.answers.destroy_all if user # ログインユーザーの回答を削除
+    session.delete(:answers)
   end
 end
