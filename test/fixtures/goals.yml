@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  cold_symptom: one
+  goal_body: MyText
+  count: 2024-06-05 12:01:33
+
+two:
+  user: two
+  cold_symptom: two
+  goal_body: MyText
+  count: 2024-06-05 12:01:33
