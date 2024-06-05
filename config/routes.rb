@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'goals/index'
+  get 'goals/new'
+  get 'goals/edit'
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
     sessions: 'users/sessions'

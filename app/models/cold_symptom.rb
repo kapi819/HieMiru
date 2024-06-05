@@ -1,5 +1,6 @@
 class ColdSymptom < ApplicationRecord
   belongs_to :user
+  has_many :goals
 
   validates :symptom_title, presence: true
   validates :symptom_body, presence: true
