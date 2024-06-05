@@ -7,3 +7,8 @@ ja:
   users:
     show:
       title: マイページ
+  goals:
+    edit:
+      title: 目標編集
+    index:
+      title: 目標

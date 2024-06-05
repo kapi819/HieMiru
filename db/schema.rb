@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_14_090117) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_05_030133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_090117) do
     t.index ["user_id"], name: "index_cold_symptoms_on_user_id"
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cold_symptom_id", null: false
+    t.text "goal_body", null: false
+    t.datetime "count", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cold_symptom_id"], name: "index_goals_on_cold_symptom_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "question_title", null: false
     t.datetime "created_at", null: false
@@ -72,4 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_090117) do
   add_foreign_key "answers", "users"
   add_foreign_key "choices", "questions"
   add_foreign_key "cold_symptoms", "users"
+  add_foreign_key "goals", "cold_symptoms"
+  add_foreign_key "goals", "users"
 end
