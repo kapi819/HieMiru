@@ -1,5 +1,0 @@
-<%= form_with model: @goal  do |f| %>
-  <%= f.label :"目標を設定して下さい" %>
-  <%= f.text_area :body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first&.solution.to_s %>
-  <%= f.submit "送信", class: "btn btn-primary" %>
-<% end %>

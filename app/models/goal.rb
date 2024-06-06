@@ -5,4 +5,3 @@ class Goal < ApplicationRecord
   validates :goal_body, presence: true
   validates :count, presence: true
 end
-
