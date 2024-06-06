@@ -4,7 +4,7 @@ class CreateGoals < ActiveRecord::Migration[7.1]
       t.references :user, null: false, foreign_key: true
       t.references :cold_symptom, null: false, foreign_key: true
       t.text :goal_body, null: false
-      t.datetime :count, null: false
+      t.integer :count, null: false, default: 0
 
       t.timestamps
     end
