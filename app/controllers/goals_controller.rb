@@ -2,6 +2,10 @@ class GoalsController < ApplicationController
   def show
     @goal = Goal.new
   end
+  
+  def new
+    @goal = current_user.goals.build
+  end
 
   def create
     @goal = current_user.goals.build(goal_params)
@@ -11,8 +15,18 @@ class GoalsController < ApplicationController
     if @goal.save
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
-      render 'users/show'
+      render :new
     end
+  end
+
+  def show
+    @goal = current_user.goals.find(params[:id])
+  end
+
+  def record
+    @goal = current_user.goals.find(params[:id])
+    @goal.increment!(:count)
+    redirect_to @goal, notice: 'Goal was successfully recorded.'
   end
 
   def edit

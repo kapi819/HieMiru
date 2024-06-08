@@ -1,0 +1,5 @@
+<h1>記録する</h1>
+<p>あなたの目標は: <%= @goal.goal_body %></p>
+<div>
+  <%= link_to '記録する', record_goal_path(@goal), method: :post, class: "btn btn-primary" %>
+</div>
