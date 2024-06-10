@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def show
-    @goal = Goal.new
+    @goal = current_user.goals.find(params[:id])
   end
   
   def new
@@ -19,14 +19,20 @@ class GoalsController < ApplicationController
     end
   end
 
-  def show
-    @goal = current_user.goals.find(params[:id])
-  end
-
   def record
-    @goal = current_user.goals.find(params[:id])
-    @goal.increment!(:count)
-    redirect_to @goal, notice: 'Goal was successfully recorded.'
+    @goal = Goal.last || Goal.new(count: 0)
+    @goal.count += 1
+    if @goal.save
+      respond_to do |format|
+        # format.html { redirect_to root_path, notice: 'Goal was successfully recorded.' }
+        format.json { render json: { count: @goal.count } }
+      end
+    else
+      respond_to do |format|
+        # format.html { redirect_to root_path, alert: 'Failed to record goal.' }
+        format.json { render json: { error: 'Failed to record goal' }, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
