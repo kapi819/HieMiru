@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show]
-  resources :goals, only: [:show, :new, :edit, :create] do
+  resources :goals, only: [:show, :new, :create, :update, :edit] do
     post :record, on: :member
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

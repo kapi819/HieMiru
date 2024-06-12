@@ -1,2 +1,18 @@
-<h1>Goals#edit</h1>
-<p>Find me in app/views/goals/edit.html.erb</p>
+<% content_for( :title, t('.title'))%>
+<div class="container">
+  <div class="top-wrapper">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <h1>目標の編集</h1>
+      <%= form_with model: @goal, local: true do |f| %>
+        <div class="field">
+          <%= f.label :goal_body, "目標を設定して下さい" %>
+          <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: @goal.goal_body %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "更新", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

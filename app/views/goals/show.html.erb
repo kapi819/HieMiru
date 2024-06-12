@@ -3,6 +3,7 @@
   <div class="top-wrapper">
     <div class="col-md-10 col-lg-8 mx-auto">
       <h1><%= @goal.goal_body %></h1>
+      <%= link_to 'Edit', edit_goal_path(@goal), class: 'btn btn-secondary' %>
       <div id="progress-container" style="position: relative; width: 200px; height: 200px;">
         <canvas id="progress-canvas" width="200" height="200"></canvas>
         <div id="progress-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
