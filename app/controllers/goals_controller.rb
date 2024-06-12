@@ -1,6 +1,7 @@
 class GoalsController < ApplicationController
+  before_action :set_goal, only: [:show, :edit, :update]
+
   def show
-    @goal = current_user.goals.find(params[:id])
   end
   
   def new
@@ -44,6 +45,20 @@ class GoalsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @goal.update(goal_params)
+      redirect_to @goal, notice: 'Goal was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def set_goal
+    @goal = current_user.goals.find(params[:id])
   end
 
   def goal_params

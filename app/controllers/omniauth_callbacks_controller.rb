@@ -23,7 +23,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     Rails.logger.debug "Entering after_login method"
     puts "Entering after_login method" # デバッグ用のputsを追加
     if current_user.goals.any?
-      redirect_to goals_path
+      redirect_to goal_path(current_user.goals.first)
     else
       redirect_to new_goal_path
     end

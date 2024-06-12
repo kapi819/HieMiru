@@ -1,6 +1,6 @@
 <header>
   <nav class='navbar navbar-expand-lg navigation navbar-light bg-light'>
-    <%= link_to user_path(current_user), class: 'navbar-brand' do %>
+    <%= link_to "#", class: 'navbar-brand' do %>
       <%= image_tag 'logo.png', style: 'max-height: 60px; width: auto;' %>
     <% end %>
     <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -12,9 +12,11 @@
         <li class='nav-item'>
           <%= link_to '冷え性診断', questions_path, class: 'nav-link' %>
         </li>
-        <li class='nav-item'>
-          <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
-        </li>
+        <% if current_user.goals.any? %>
+          <%= link_to '記録', goal_path(current_user.goals.first), class: 'nav-link' %>
+        <% else %>
+          <%= link_to '記録', new_goal_path, class: 'nav-link' %>
+        <% end %>
         <li class='nav-item'>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
