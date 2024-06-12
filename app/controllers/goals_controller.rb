@@ -9,12 +9,17 @@ class GoalsController < ApplicationController
 
   def create
     @goal = current_user.goals.build(goal_params)
-    @goal.cold_symptom_id = ColdSymptom.first.id
+    @goal.cold_symptom_id ||= ColdSymptom.first&.id
     @goal.count ||= 0
 
+    Rails.logger.debug "Goal params: #{goal_params.inspect}"
+    Rails.logger.debug "Goal object before save: #{@goal.inspect}"
+
     if @goal.save
+      Rails.logger.debug "Goal successfully created"
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
+      Rails.logger.error "Failed to create goal: #{@goal.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -22,14 +27,17 @@ class GoalsController < ApplicationController
   def record
     @goal = Goal.last || Goal.new(count: 0)
     @goal.count += 1
+
+    if @goal.count > 7
+      @goal.count = 0
+    end
+
     if @goal.save
       respond_to do |format|
-        # format.html { redirect_to root_path, notice: 'Goal was successfully recorded.' }
         format.json { render json: { count: @goal.count } }
       end
     else
       respond_to do |format|
-        # format.html { redirect_to root_path, alert: 'Failed to record goal.' }
         format.json { render json: { error: 'Failed to record goal' }, status: :unprocessable_entity }
       end
     end
@@ -39,6 +47,6 @@ class GoalsController < ApplicationController
   end
 
   def goal_params
-    params.require(:goal).permit(:goal_body)
+    params.require(:goal).permit(:goal_body, :cold_symptom_id, :count)
   end
 end
