@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.goals.any?
-      goals_path
+      goal_path(current_user.goals.first)
     else
       new_goal_path
     end
