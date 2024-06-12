@@ -48,9 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_05_030133) do
 
   create_table "goals", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "cold_symptom_id"
+    t.bigint "cold_symptom_id", null: false
     t.text "goal_body", null: false
-    t.integer "count", default: 0, null: false
+    t.datetime "count", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cold_symptom_id"], name: "index_goals_on_cold_symptom_id"
