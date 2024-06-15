@@ -1,0 +1,66 @@
+<% content_for(:title, t('.title'))%>
+<div class="container">
+  <div class="top-wrapper">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <%= form_with model: @diary, local: true do |form| %>
+        <div>
+          <%= form.hidden_field :start_time, value: Date.today %>
+        </div>
+        <div>
+          <%= form.label :body_temperature, "体温 (°C)" %>
+          <%= form.number_field :body_temperature, step: 0.1 %><br><br>
+        </div>
+        <div>
+          <%= form.label :weight, "体重 (Kg)" %>
+          <%= form.number_field :weight, step: 0.1 %><br><br>
+        </div>
+        <div>
+          <%= form.label :body_fat, "体脂肪 (%)" %>
+          <%= form.number_field :body_fat, step: 0.1 %><br><br>
+        </div>
+        <div>
+          <%= form.label :physical_condition, "体調" %>
+          <div class="physical-condition-options">
+            <%= form.radio_button :physical_condition, :bad, id: 'physical_condition_bad' %>
+            <%= label_tag 'physical_condition_bad' do %>
+              <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+
+            <%= form.radio_button :physical_condition, :normal, id: 'physical_condition_normal' %>
+            <%= label_tag 'physical_condition_normal' do %>
+              <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+
+            <%= form.radio_button :physical_condition, :good, id: 'physical_condition_good' %>
+            <%= label_tag 'physical_condition_good' do %>
+              <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= form.label :mental_condition, "メンタル" %>
+          <div class="mental-condition-options">
+            <%= form.radio_button :mental_condition, :mental_bad, id: 'mental_condition_bad' %>
+            <%= label_tag 'mental_condition_bad' do %>
+              <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+
+            <%= form.radio_button :mental_condition, :mental_normal, id: 'mental_condition_normal' %>
+            <%= label_tag 'mental_condition_normal' do %>
+              <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+
+            <%= form.radio_button :mental_condition, :mental_good, id: 'mental_condition_good' %>
+            <%= label_tag 'mental_condition_good' do %>
+              <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 80px;"></i>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= form.submit "登録" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

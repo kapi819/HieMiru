@@ -123,6 +123,16 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
+    font-awesome-sass (6.5.2)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (4.26.1)
@@ -297,6 +307,8 @@ GEM
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.77.0-x86_64-linux-gnu)
       google-protobuf (>= 3.25, < 5.0)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.20.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
@@ -359,6 +371,8 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  font-awesome-rails
+  font-awesome-sass
   jbuilder
   jsbundling-rails
   omniauth-line
