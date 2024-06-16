@@ -5,8 +5,8 @@ class CreateDiaries < ActiveRecord::Migration[7.1]
       t.float :body_temperature
       t.float :weight
       t.float :body_fat
-      t.string :physical_condition
-      t.string :mental_condition
+      t.integer :physical_condition
+      t.integer :mental_condition
       t.datetime :start_time
 
       t.timestamps
