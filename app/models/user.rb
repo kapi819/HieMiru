@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :choices, through: :answers
   has_many :goals
   has_many :cold_symptoms
+  has_many :diaries
   
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first

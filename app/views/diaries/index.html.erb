@@ -1,0 +1,18 @@
+<% content_for(:title, t('.title'))%>
+<div class="container">
+  <div class="top-wrapper">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <%= month_calendar events: @diaries do |date, records| %>
+        <%= date.day %>
+
+        <% if records.present? %>
+          <% records.each do |record| %>
+            <div>
+              <%= link_to image_tag("#", size: "80x80"), diary_path(id: record.id) %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

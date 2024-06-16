@@ -1,6 +1,8 @@
 @import "application.bootstrap";
 @import "top";
 @import "simple_calendar";
+@import 'font-awesome-sprockets';
+@import "font-awesome";
 
 .hidden {
     display: none; /* 要素を非表示にする */
