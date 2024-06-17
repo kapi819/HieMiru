@@ -3,21 +3,30 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = user_diaries
+    @today_diary = current_user.diaries.find_by(start_time: Date.today)
   end
 
   def show
   end
 
   def new
-    @diary = Diary.new
+    if current_user.diaries.exists?(start_time: Date.today)
+      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
+    else
+      @diary = Diary.new
+    end
   end
 
   def create
-    @diary = current_user.diaries.new(diary_params)
-    if @diary.save
-      redirect_to @diary
+    if current_user.diaries.exists?(start_time: Date.today)
+      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
     else
-      render :new
+      @diary = current_user.diaries.new(diary_params)
+      if @diary.save
+        redirect_to @diary
+      else
+        render :new
+      end
     end
   end
 
