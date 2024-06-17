@@ -8,7 +8,27 @@
         <% if records.present? %>
           <% records.each do |record| %>
             <div>
-              <%= link_to image_tag("#", size: "80x80"), diary_path(id: record.id) %>
+              <%= link_to diary_path(record) do %>
+                <% if record.physical_condition.present? %>
+                  <% if record.physical_condition == 'physical_bad' %>
+                    <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% elsif record.physical_condition == 'physical_normal' %>
+                    <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% elsif record.physical_condition == 'physical_good' %>
+                    <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% end %>
+                <% end %>
+
+                <% if record.mental_condition.present? %>
+                  <% if record.mental_condition == 'mental_bad' %>
+                    <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% elsif record.mental_condition == 'mental_normal' %>
+                    <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% elsif record.mental_condition == 'mental_good' %>
+                    <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 20px;"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
             </div>
           <% end %>
         <% end %>

@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:show, :edit, :update]
+  before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   def index
     @diaries = user_diaries
@@ -33,10 +33,22 @@ class DiariesController < ApplicationController
     end
   end
 
+  def destroy
+    logger.debug "Destroy action called for Diary ID: #{@diary.id}"
+    if @diary.destroy
+      logger.debug "Diary ID: #{@diary.id} successfully destroyed."
+      redirect_to diaries_url, notice: 'Diary was successfully destroyed.'
+    else
+      logger.debug "Failed to destroy Diary ID: #{@diary.id}"
+      redirect_to diaries_url, alert: 'Failed to destroy the diary.'
+    end
+  end
+
   private
 
   def set_diary
     @diary = Diary.find(params[:id])
+    logger.debug "Set Diary for ID: #{@diary.id}"
   end
 
   def user_diaries
