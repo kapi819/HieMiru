@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_020552) do
     t.float "body_temperature"
     t.float "weight"
     t.float "body_fat"
-    t.string "physical_condition"
-    t.string "mental_condition"
+    t.integer "physical_condition"
+    t.integer "mental_condition"
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

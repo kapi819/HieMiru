@@ -7,4 +7,14 @@ ja:
           lower: "内臓冷え性"
           internal: "下半身冷え性"
           systemic: "全身冷え性"
+      Diary:
+        physical_condition:
+          physical_bad: "悪い"
+          physical_normal: "普通"
+          physical_good: "良い"
+        mental_condition:
+          mental_bad: "悪い"
+          mental_normal: "普通"
+          mental_good: "良い"
+
           

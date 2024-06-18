@@ -34,7 +34,9 @@ class DiariesController < ApplicationController
   end
 
   def update
+    Rails.logger.debug "Update Parameters: #{diary_params.inspect}"
     if @diary.update(diary_params)
+      Rails.logger.debug "Updated Diary: #{@diary.inspect}"
       redirect_to @diary, notice: 'Diary was successfully updated.'
     else
       flash.now[:error] = @diary.errors.full_messages.join(", ")
@@ -57,7 +59,7 @@ class DiariesController < ApplicationController
 
   def set_diary
     @diary = Diary.find(params[:id])
-    logger.debug "Set Diary for ID: #{@diary.id}"
+    Rails.logger.debug "Set Diary for ID: #{@diary.id}"
   end
 
   def user_diaries

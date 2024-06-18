@@ -19,17 +19,18 @@
             </div>
           <% end %>
         <% end %>
+
       <% end %>
+      <% unless @today_diary %>
+        <%= link_to new_diary_path, class: 'btn btn-primary' do %>
+          <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
+        <% end %>
+      <% else %>
+        <p>本日の記録は既に作成されています。</p>
+      <% end %>
+      <div class="container my-4">
+        <%= line_chart @diaries.pluck(:start_time, :body_temperature).count %>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="container text-center my-4">
-  <% unless @today_diary %>
-    <%= link_to new_diary_path, class: 'btn btn-primary' do %>
-      <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
-    <% end %>
-  <% else %>
-    <p>本日の記録は既に作成されています。</p>
-  <% end %>
 </div>

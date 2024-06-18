@@ -1,6 +1,9 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update]
 
+  def index
+  end
+
   def show
   end
   
@@ -11,7 +14,6 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
-    @goal.count ||= 0
 
     Rails.logger.debug "Goal params: #{goal_params.inspect}"
     Rails.logger.debug "Goal object before save: #{@goal.inspect}"
