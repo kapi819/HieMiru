@@ -3,21 +3,30 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = user_diaries
+    @today_diary = current_user.diaries.find_by(start_time: Date.today)
   end
 
   def show
   end
 
   def new
-    @diary = Diary.new
+    if current_user.diaries.exists?(start_time: Date.today)
+      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
+    else
+      @diary = Diary.new
+    end
   end
 
   def create
-    @diary = current_user.diaries.new(diary_params)
-    if @diary.save
-      redirect_to @diary
+    if current_user.diaries.exists?(start_time: Date.today)
+      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
     else
-      render :new
+      @diary = current_user.diaries.new(diary_params)
+      if @diary.save
+        redirect_to @diary
+      else
+        render :new
+      end
     end
   end
 
@@ -25,7 +34,9 @@ class DiariesController < ApplicationController
   end
 
   def update
+    Rails.logger.debug "Update Parameters: #{diary_params.inspect}"
     if @diary.update(diary_params)
+      Rails.logger.debug "Updated Diary: #{@diary.inspect}"
       redirect_to @diary, notice: 'Diary was successfully updated.'
     else
       flash.now[:error] = @diary.errors.full_messages.join(", ")
@@ -48,7 +59,7 @@ class DiariesController < ApplicationController
 
   def set_diary
     @diary = Diary.find(params[:id])
-    logger.debug "Set Diary for ID: #{@diary.id}"
+    Rails.logger.debug "Set Diary for ID: #{@diary.id}"
   end
 
   def user_diaries

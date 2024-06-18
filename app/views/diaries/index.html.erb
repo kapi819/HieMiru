@@ -10,29 +10,27 @@
             <div>
               <%= link_to diary_path(record) do %>
                 <% if record.physical_condition.present? %>
-                  <% if record.physical_condition == 'physical_bad' %>
-                    <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% elsif record.physical_condition == 'physical_normal' %>
-                    <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% elsif record.physical_condition == 'physical_good' %>
-                    <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% end %>
+                  <i class="fa fa-<%= record.physical_condition == 'physical_bad' ? 'frown-o' : record.physical_condition == 'physical_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
                 <% end %>
-
                 <% if record.mental_condition.present? %>
-                  <% if record.mental_condition == 'mental_bad' %>
-                    <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% elsif record.mental_condition == 'mental_normal' %>
-                    <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% elsif record.mental_condition == 'mental_good' %>
-                    <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 20px;"></i>
-                  <% end %>
+                  <i class="fa fa-<%= record.mental_condition == 'mental_bad' ? 'frown-o' : record.mental_condition == 'mental_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
                 <% end %>
               <% end %>
             </div>
           <% end %>
         <% end %>
+
       <% end %>
+      <% unless @today_diary %>
+        <%= link_to new_diary_path, class: 'btn btn-primary' do %>
+          <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
+        <% end %>
+      <% else %>
+        <p>本日の記録は既に作成されています。</p>
+      <% end %>
+      <div class="container my-4">
+        <%= line_chart @diaries.pluck(:start_time, :body_temperature).count %>
+      </div>
     </div>
   </div>
 </div>

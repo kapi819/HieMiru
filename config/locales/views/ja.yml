@@ -15,3 +15,7 @@ ja:
   diaries:
     index:
       title: カレンダー
+    show:
+      title: 記録詳細
+    edit:
+      title: 記録編集

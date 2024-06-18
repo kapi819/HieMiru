@@ -2,6 +2,7 @@
 import "./record";
 import "@hotwired/turbo-rails"
 import "./controllers"
+import "chartkick/chart.js"
 import * as bootstrap from "bootstrap"
 
 console.log("JavaScript file");

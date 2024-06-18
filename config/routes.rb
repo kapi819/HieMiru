@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show]
-  resources :goals, only: [:show, :new, :create, :update, :edit] do
+  resources :goals, only: [:show, :new, :create, :update, :edit, :index] do
     post :record, on: :member
   end
   resources :diaries
