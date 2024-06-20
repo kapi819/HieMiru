@@ -12,7 +12,7 @@
         <li class='nav-item'>
           <%= link_to '冷え性診断', questions_path, class: 'nav-link' %>
         </li>
-        <% if current_user.goals.present? %>
+        <% if current_user.goals.present? && current_user.goals.first.persisted? %>
           <% Rails.logger.debug "Goals: #{current_user.goals.to_a.inspect}" %>
           <%= link_to '記録', goal_path(current_user.goals.first), class: 'nav-link' %>
         <% else %>
@@ -28,3 +28,4 @@
     </div>
   </nav>
 </header>
+
