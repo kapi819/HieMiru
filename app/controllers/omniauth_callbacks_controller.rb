@@ -28,7 +28,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # current_user.goalsの内容をログ出力
     Rails.logger.debug "Goals: #{current_user.goals.to_a.inspect}"
     puts "Goals: #{current_user.goals.to_a.inspect}"
-    if current_user.goals.any?
+    if current_user.goals.present?
       # first_goalの内容をログ出力
       Rails.logger.debug "First goal: #{current_user.goals.first.inspect}"
       puts "First goal: #{current_user.goals.first.inspect}"

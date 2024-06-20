@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
   console.log("JavaScript file loaded!");
 
   const button = document.getElementById('record-button');

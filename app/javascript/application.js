@@ -6,7 +6,7 @@ import "chartkick/chart.js"
 import * as bootstrap from "bootstrap"
 
 console.log("JavaScript file");
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   let currentQuestion = 1;
   const totalQuestions = 6;
 
