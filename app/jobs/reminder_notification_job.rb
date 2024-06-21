@@ -16,6 +16,6 @@ class ReminderNotificationJob < ApplicationJob
   private
 
   def generate_reminder_message(user)
-    "こんにちは、#{user.name}さん、今週のタスクを忘れずにチェックしてくださいね！"
+    "こんにちは、#{user.name}さん。今週のタスクを忘れずにチェックしてくださいね！"
   end
 end
