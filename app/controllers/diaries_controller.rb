@@ -63,7 +63,7 @@ class DiariesController < ApplicationController
   end
 
   def user_diaries
-    current_user.diaries
+    current_user.diaries.order(:start_time) # 日付順に並び替え
   end
 
   def diary_params
