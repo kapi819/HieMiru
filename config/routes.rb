@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
-  root 'staticpages#top'
+  root 'static_pages#top'
+  get 'terms', to: 'static_pages#terms'
+  get 'privacy', to: 'static_pages#privacy'
   resources :questions, only: [:index, :create] do
     collection do
       get 'result'
