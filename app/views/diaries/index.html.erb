@@ -29,7 +29,11 @@
         <p>本日の記録は既に作成されています。</p>
       <% end %>
       <div class="container my-4">
-        <%= line_chart @diaries.pluck(:start_time, :body_temperature).count %>
+        <%= line_chart [
+                        {name: "Body Temperature", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_temperature] }},
+                        {name: "Weight", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.weight] }},
+                        {name: "Body Fat", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_fat] }}
+                      ] %>
       </div>
     </div>
   </div>
