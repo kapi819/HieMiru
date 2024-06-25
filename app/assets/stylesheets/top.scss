@@ -12,12 +12,17 @@
 }
 
 footer{
-  background-color: #99E4FB;
+  display: flex;
+  justify-content: center;
+  background-color: #CCF0FB;
   text-align: center;
-  position: fixed;
-  bottom: 0;
+  position: static;
+  overflow: hidden;
   margin-bottom: 0;
+  z-index: 10;
   width: 100%;
+  padding: 10px 0;
+  flex-shrink: 0;
 }
 
 .main-catch {
