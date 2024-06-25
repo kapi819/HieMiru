@@ -4,12 +4,12 @@
     <div class="col-md-10 col-lg-8 mx-auto">
       <h1>記録詳細</h1>
 
-      <p>日付: <%= @diary.start_time %></p>
+      <p>日付: <%= @diary.start_time.strftime("%b %d") %></p>
       <p>体温 (°C): <%= @diary.body_temperature %></p>
       <p>体重 (Kg): <%= @diary.weight %></p>
       <p>体脂肪 (%): <%= @diary.body_fat %></p>
-      <p>体調: <%= @diary.physical_condition %></p>
-      <p>メンタル: <%= @diary.mental_condition %></p>
+      <p>体調: <%= t("activerecord.attributes.diary.physical_condition.#{@diary.physical_condition}") %></p>
+      <p>メンタル: <%= t("activerecord.attributes.diary.mental_condition.#{@diary.mental_condition}") %></p>
 
       <%= link_to '編集', edit_diary_path(@diary), class: 'btn btn-primary' %>
       <%= button_to '削除', diary_path(@diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
