@@ -1,0 +1,27 @@
+.navbar {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  background-color: #99E4FB;
+  height: 60px;
+  z-index: 10;
+}
+
+.footer-bottom {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  background-color: #99E4FB;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  text-align: center;
+  z-index: 10;
+}
+
+.pink {
+  color: #FF5192;
+}
