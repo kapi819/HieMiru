@@ -1,7 +1,77 @@
 @import "application.bootstrap";
-@import "top";
+@import "static_pages";
 @import "simple_calendar";
 
-.hidden {
+  .btn {
+    width: 100%;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .hidden {
     display: none; /* 要素を非表示にする */
   }
+
+  .transparent-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .top-wrapper {
+    color: black;
+    height: calc(100vh - 134px);
+    position: relative;
+    background-position: center;
+    padding-top: 60px;
+  }
+  
+  // 大デバイス（デスクトップ, 1200px 未満）
+@media (min-width: 992px) {
+  body {
+    font-size: 1rem;
+  }
+  .h-80{
+    height: 80px;
+  }
+
+  p.stay-top {
+    margin: initial;
+    margin-top: 10px;
+  }
+  
+ }
+// 中デバイス（タブレット, 992px 未満）
+@media (max-width: 991.98px) {
+  div.main-contents {
+    font-size: 1.0rem;
+    text-align: center;
+  }
+ }
+ // @include media-breakpoint-up(sm) {
+ @media (max-width: 550px) {
+  body, .btn-sm, .btn {
+    text-align: center;
+  }
+  footer {
+    font-size: 1rem;
+  }
+
+  .main-catch {
+    margin-bottom: 10px;
+    text-align: center;
+    display: block;
+  }
+ } 
+
+@media (max-width: 375px) {
+  .main-catch {
+    margin-bottom: 10px;
+    text-align: center;
+	  display: block;
+  }
+ }
