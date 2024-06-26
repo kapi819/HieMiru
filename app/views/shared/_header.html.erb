@@ -6,10 +6,10 @@
 
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
       <ul class='navbar-nav ms-auto main-nav align-items-center'>
-        <li class='nav-item'>
+        <li class='nav-item d-flex align-items-center'><i class="fa-regular fa-snowflake"></i>
           <%= link_to '冷え性診断', questions_path, class: 'nav-link' %>
         </li>
-        <li class='nav-item'>
+        <li class='nav-item d-flex align-items-center'><i class="fa-regular fa-circle"></i>
           <% if current_user.goals.present? && current_user.goals.first.persisted? %>
             <% Rails.logger.debug "Goals: #{current_user.goals.to_a.inspect}" %>
             <%= link_to '記録', goal_path(current_user.goals.first), class: 'nav-link' %>
@@ -17,10 +17,10 @@
             <%= link_to '記録', new_goal_path, class: 'nav-link' %>
           <% end %>
         </li>
-        <li class='nav-item'>
+        <li class='nav-item d-flex align-items-center'><i class="fa-solid fa-chart-pie"></i>
           <%= link_to '分析', diaries_path, method: :delete, class: 'nav-link' %>
         </li>
-        <li class='nav-item'>
+        <li class='nav-item d-flex align-items-center'><i class="fa-solid fa-bars"></i>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
       </ul>
@@ -28,3 +28,26 @@
   </nav>
 </header>
 
+<!-- Tabbar for smaller screens -->
+<header>
+  <div class="tabbar">
+    <ul class='navbar-nav main-nav nav-pills nav-justified'>
+      <li class='nav-item'><i class="fa-regular fa-snowflake"></i>
+        <%= link_to '冷え性診断', questions_path, class: 'nav-link' %>
+      </li>
+      <li class='nav-item'><i class="fa-regular fa-circle"></i>
+        <% if current_user.goals.present? && current_user.goals.first.persisted? %>
+          <%= link_to '記録', goal_path(current_user.goals.first), class: 'nav-link' %>
+        <% else %>
+          <%= link_to '記録', new_goal_path, class: 'nav-link' %>
+        <% end %>
+      </li>
+      <li class='nav-item'><i class="fa-solid fa-chart-pie"></i>
+        <%= link_to '分析', diaries_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <li class='nav-item'><i class="fa-solid fa-bars"></i>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+    </ul>
+  </div>
+</header>

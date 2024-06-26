@@ -3,10 +3,21 @@
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
-  box-shadow: none;
   background-color: #99E4FB;
   height: 60px;
   z-index: 10;
+}
+
+.tabbar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #99E4FB;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1030;
+  justify-content: space-around;
+  padding: 10px 0;
 }
 
 .footer-bottom {
@@ -14,14 +25,23 @@
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
-  background-color: #99E4FB;
+  background-color: #CCF0FB;
   position: fixed;
   bottom: 0;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
   z-index: 10;
 }
 
 .pink {
   color: #FF5192;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+      display: none;
+  }
+  .tabbar {
+      display: block;
+  }
 }

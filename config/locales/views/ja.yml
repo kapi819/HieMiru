@@ -9,12 +9,16 @@ ja:
       title: マイページ
   goals:
     edit:
-      title: 目標編集
-    index:
-      title: 目標
+      title: 記録編集
+    show:
+      title: 目標記録
+    new:
+      title: 記録
   diaries:
     index:
-      title: カレンダー
+      title: 分析
+    new:
+      title: 記録
     show:
       title: 記録詳細
     edit:
