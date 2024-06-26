@@ -2,38 +2,46 @@
 <div class="container">
   <div class="top-wrapper">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <%= month_calendar events: @diaries do |date, records| %>
-        <%= date.day %>
+      <div class="box">
+        <div class="white-box">
+          <%= month_calendar events: @diaries do |date, records| %>
+            <%= date.day %>
 
-        <% if records.present? %>
-          <% records.each do |record| %>
-            <div>
-              <%= link_to diary_path(record) do %>
-                <% if record.physical_condition.present? %>
-                  <i class="fa fa-<%= record.physical_condition == 'physical_bad' ? 'frown-o' : record.physical_condition == 'physical_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
-                <% end %>
-                <% if record.mental_condition.present? %>
-                  <i class="fa fa-<%= record.mental_condition == 'mental_bad' ? 'frown-o' : record.mental_condition == 'mental_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
-                <% end %>
+            <% if records.present? %>
+              <% records.each do |record| %>
+                <div>
+                  <%= link_to diary_path(record) do %>
+                    <% if record.physical_condition.present? %>
+                      <i class="fa fa-<%= record.physical_condition == 'physical_bad' ? 'frown-o' : record.physical_condition == 'physical_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
+                    <% end %>
+                    <% if record.mental_condition.present? %>
+                      <i class="fa fa-<%= record.mental_condition == 'mental_bad' ? 'frown-o' : record.mental_condition == 'mental_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
+                    <% end %>
+                  <% end %>
+                </div>
               <% end %>
-            </div>
-          <% end %>
-        <% end %>
+            <% end %>
 
-      <% end %>
-      <% unless @today_diary %>
-        <%= link_to new_diary_path, class: 'btn btn-primary' do %>
-          <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
-        <% end %>
-      <% else %>
-        <p>本日の記録は既に作成されています。</p>
-      <% end %>
-      <div class="container my-4">
-        <%= line_chart [
-                        {name: "Body Temperature", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_temperature] }},
-                        {name: "Weight", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.weight] }},
-                        {name: "Body Fat", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_fat] }}
-                      ] %>
+          <% end %>
+          <% unless @today_diary %>
+            <%= link_to new_diary_path, class: 'btn btn-primary' do %>
+              <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
+            <% end %>
+          <% else %>
+            <p>本日の記録は既に作成されています。</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="box">
+        <div class="white-box">
+          <div class="container my-4">
+            <%= line_chart [
+                            {name: "Body Temperature", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_temperature] }},
+                            {name: "Weight", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.weight] }},
+                            {name: "Body Fat", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_fat] }}
+                          ] %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
