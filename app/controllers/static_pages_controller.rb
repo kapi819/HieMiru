@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: :menu
   include ContentHelper
   
   def top; end
@@ -7,4 +7,6 @@ class StaticPagesController < ApplicationController
   def terms; end
 
   def privacy; end
+
+  def menu; end
 end

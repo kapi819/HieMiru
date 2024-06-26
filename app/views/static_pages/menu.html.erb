@@ -1,0 +1,26 @@
+<% content_for( :title, t('.title'))%>
+<div class="container">
+  <div class="top-wrapper">
+    <div class="row">
+      <div class="col-md-10 col-lg-8 mx-auto">
+        <div class="menu-header">メニュー</div>
+        <div class="menu-item">
+          <i class="fa-regular fa-envelope"></i>
+          <%= link_to "問い合わせ", "https://forms.gle/LFipEJM96NG52B71A", class: "link link-hover" %>
+        </div>
+        <div class="menu-item">
+          <i class="fa-solid fa-file-contract"></i>
+          <%= link_to "利用規約", terms_path, class: "link link-hover", target: "_blank" %>
+        </div>
+        <div class="menu-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <%= link_to "プライバシーポリシー", privacy_path, class: "link link-hover" %>
+        </div>
+        <div class="menu-item">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

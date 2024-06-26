@@ -18,10 +18,10 @@
           <% end %>
         </li>
         <li class='nav-item d-flex align-items-center'><i class="fa-solid fa-chart-pie"></i>
-          <%= link_to '分析', diaries_path, method: :delete, class: 'nav-link' %>
+          <%= link_to '分析', diaries_path, class: 'nav-link' %>
         </li>
         <li class='nav-item d-flex align-items-center'><i class="fa-solid fa-bars"></i>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          <%= link_to 'メニュー', menu_path, class: 'nav-link' %>
         </li>
       </ul>
     </div>
@@ -43,10 +43,10 @@
         <% end %>
       </li>
       <li class='nav-item'><i class="fa-solid fa-chart-pie"></i>
-        <%= link_to '分析', diaries_path, method: :delete, class: 'nav-link' %>
+        <%= link_to '分析', diaries_path, class: 'nav-link' %>
       </li>
       <li class='nav-item'><i class="fa-solid fa-bars"></i>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        <%= link_to 'メニュー', menu_path, class: 'nav-link' %>
       </li>
     </ul>
   </div>

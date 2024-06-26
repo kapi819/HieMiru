@@ -33,6 +33,19 @@
   z-index: 10;
 }
 
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.menu-item i {
+  margin-right: 10px;
+}
+.menu-header {
+  font-weight: bold;
+  padding: 15px 0 5px 0;
+}
+
 .pink {
   color: #FF5192;
 }
