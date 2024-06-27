@@ -10,8 +10,12 @@
     font-weight: bold;
   }
 
+  .center {
+    text-align: center;
+  }
+
   .hidden {
-    display: none; /* 要素を非表示にする */
+    display: none;
   }
 
   .transparent-button {
@@ -35,8 +39,41 @@
     border-radius: 2px;
     padding: 10px 10px 5px 10px;
     margin: 10px 0 0 0;
-    box-shadow: 0.5px 0.5px 1px 1px
-  
+    box-shadow: 0.5px 0.5px 1px 1px  
+  }
+
+  #progress-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #progress-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+
+  #progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  #record-button {
+    background-color: #99E4FB;
+    border-radius: 5px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* ボタンの幅を200pxに設定 */
+  }
+
+  #comment-container {
+    margin-top: 20px;
   }
   
   // 大デバイス（デスクトップ, 1200px 未満）

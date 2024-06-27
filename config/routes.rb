@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :goals, only: [:show, :new, :create, :update, :edit, :index] do
     post :record, on: :member
+    get :check_record, on: :member
   end
   resources :diaries
 
