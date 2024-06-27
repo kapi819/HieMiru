@@ -1,0 +1,13 @@
+<%= form_with model: @goal, url: goals_path, method: :post, local: true do |f| %>
+  <%= f.label :goal_body, "目標を設定して下さい" %>
+  <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first&.solution.to_s %>
+
+  <% if current_user.cold_symptoms.any? %>
+    <%= f.hidden_field :cold_symptom_id, value: current_user.cold_symptoms.first.id %>
+  <% else %>
+    <%= f.hidden_field :cold_symptom_id, value: nil %>
+  <% end %>
+  
+  <%= f.hidden_field :count, value: 0 %>
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>

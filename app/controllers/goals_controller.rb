@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :new, :create, :edit, :update]
+  before_action :set_goal, only: [:show, :edit, :update]
 
   def index
   end

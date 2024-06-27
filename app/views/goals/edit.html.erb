@@ -2,17 +2,11 @@
 <div class="container">
   <div class="top-wrapper">
     <div class="col-md-10 col-lg-8 mx-auto">
-      <h1>目標の編集</h1>
-      <%= form_with model: @goal, local: true do |f| %>
-        <div class="field">
-          <%= f.label :goal_body, "目標を設定して下さい" %>
-          <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: @goal.goal_body %>
+      <div class="box">
+        <div class="white-box center">
+          <%= render 'form', goal: @goal %>
         </div>
-
-        <div class="actions">
-          <%= f.submit "更新", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
