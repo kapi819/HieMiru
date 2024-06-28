@@ -3,15 +3,15 @@
   <div class="top-wrapper">
     <div class="row">
       <div class="col-md-10 col-lg-8 mx-auto">
-        <div class="text-center">
+        <div class="text-center question-wrapper">
           <p id="start-description">
-            この診断では自身の冷え性度を知ることができます。<br>質問は合計で6問です
+            6問で分かる<br>あなたの冷え性タイプ診断
           </p>
-          <button type="button" class="btn btn-primary" id="start-questions">診断を始める</button>
+          <button type="button" class="btn btn-primary" id="start-questions">診断スタート</button>
         </div>
         <div class="container mx-auto text-center">
           <%= form_with url: questions_path, method: :post, data: { turbo: false } do |f| %>
-          <div class="error-message hidden px-10 py-2 mb-10 mx-10 text-sm" id="error_message">選択してください</div>
+          <div class="error-message hidden text-sm" id="error_message">選択してください</div>
             <% @questions.each_with_index do |question, index| %>
               <div id="question_<%= index + 1 %>" class="hidden">
                 <h2 class="text-center">Q<%= index + 1 %></h2>
@@ -19,16 +19,18 @@
                   <p class=""><%= question.question_title %></p>
                   <div class="flex flex-col">
                     <% question.choices.each do |choice| %>
-                      <%= f.radio_button "answers[#{question.id}]", choice.id, id: "answer_#{question.id}_#{choice.id}", data: { question_id: index + 1 } %>
-                      <%= f.label "answer_#{question.id}_#{choice.id}", choice.question_body, class: '' %>
+                      <div class="form-check">
+                        <%= f.radio_button "answers[#{question.id}]", choice.id, id: "answer_#{question.id}_#{choice.id}", class: 'btn-check', autocomplete: 'off', data: { question_id: index + 1 } %>
+                        <%= f.label "answer_#{question.id}_#{choice.id}", choice.question_body, class: 'btn btn-question' %>
+                      </div>
                     <% end %>
                   </div>
                 </div>
               </div>
             <% end %>
-            <button type="button" data-action="previous-question" id="previous_button" class="hidden">戻る</button>
-            <button type="button" data-action="next-question" id="next_button" class="hidden">次へ</button>
-            <%= f.submit "結果", id: "submit-button", class: 'hidden' %>
+            <button type="button" data-action="previous-question" id="previous_button" class="btn-previous hidden">戻る</button>
+            <button type="button" data-action="next-question" id="next_button" class="btn-next hidden">次へ</button>
+            <%= f.submit "結果", id: "submit-button", class: 'btn-next hidden' %>
           <% end %>
         </div>
       </div>
