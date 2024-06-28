@@ -31,7 +31,38 @@
     height: calc(100vh - 134px);
     position: relative;
     background-position: center;
-    padding-top: 60px;
+    padding: 60px 80px 0 0;
+  }
+
+  .question-wrapper {
+    padding-top: 40px;
+  }
+
+  .btn-question {
+    background-color: #99E4FB80;
+    border-radius: 8px;
+    width: 300px;
+    margin: 5px;
+  }
+
+  .btn-previous {
+    background-color: #99E4FB1A;
+    border-radius: 5px;
+    width: 100px;
+    margin: 5px;
+  }
+
+  .btn-next {
+    background-color: #78C8E6E6;
+    border-radius: 5px;
+    width: 100px;
+    margin: 5px;
+  }
+
+  .btn-share {
+    background-color: #99E4FB1A;
+    border-radius: 5px;
+    margin: 5px;
   }
 
   .white-box {
