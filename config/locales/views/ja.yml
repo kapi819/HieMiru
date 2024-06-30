@@ -26,3 +26,7 @@ ja:
   static_pages:
     menu:
       title: メニュー
+    privacy:
+      title: プライバシーポリシー
+    terms:
+      title: 利用規約

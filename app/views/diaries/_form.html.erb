@@ -17,38 +17,38 @@
   <div>
     <%= form.label :physical_condition, "体調" %>
     <div class="physical-condition-options">
-      <%= form.radio_button :physical_condition, 'physical_bad', id: 'physical_condition_bad' %>
-      <%= label_tag 'physical_condition_bad' do %>
-        <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :physical_condition, 'physical_bad', id: 'physical_condition_bad', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'physical_condition_bad', class: 'physical-icon' do %>
+        <i class="fa fa-frown-o" aria-hidden="true"></i>
       <% end %>
 
-      <%= form.radio_button :physical_condition, 'physical_normal', id: 'physical_condition_normal' %>
-      <%= label_tag 'physical_condition_normal' do %>
-        <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :physical_condition, 'physical_normal', id: 'physical_condition_normal', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'physical_condition_normal', class: 'physical-icon' do %>
+        <i class="fa fa-meh-o" aria-hidden="true" ></i>
       <% end %>
 
-      <%= form.radio_button :physical_condition, 'physical_good', id: 'physical_condition_good' %>
-      <%= label_tag 'physical_condition_good' do %>
-        <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :physical_condition, 'physical_good', id: 'physical_condition_good', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'physical_condition_good', class: 'physical-icon' do %>
+        <i class="fa fa-smile-o" aria-hidden="true" ></i>
       <% end %>
     </div>
   </div>
   <div>
     <%= form.label :mental_condition, "メンタル" %>
     <div class="mental-condition-options">
-      <%= form.radio_button :mental_condition, 'mental_bad', id: 'mental_condition_bad' %>
-      <%= label_tag 'mental_condition_bad' do %>
-        <i class="fa fa-frown-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :mental_condition, 'mental_bad', id: 'mental_condition_bad', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'mental_condition_bad', class: 'mental-icon' do %>
+        <i class="fa fa-frown-o" aria-hidden="true" ></i>
       <% end %>
 
-      <%= form.radio_button :mental_condition, 'mental_normal', id: 'mental_condition_normal' %>
-      <%= label_tag 'mental_condition_normal' do %>
-        <i class="fa fa-meh-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :mental_condition, 'mental_normal', id: 'mental_condition_normal', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'mental_condition_normal', class: 'mental-icon' do %>
+        <i class="fa fa-meh-o" aria-hidden="true" ></i>
       <% end %>
 
-      <%= form.radio_button :mental_condition, 'mental_good', id: 'mental_condition_good' %>
-      <%= label_tag 'mental_condition_good' do %>
-        <i class="fa fa-smile-o" aria-hidden="true" style="font-size: 80px;"></i>
+      <%= form.radio_button :mental_condition, 'mental_good', id: 'mental_condition_good', class: 'btn-check d-none', autocomplete: 'off' %>
+      <%= label_tag 'mental_condition_good', class: 'mental-icon' do %>
+        <i class="fa fa-smile-o" aria-hidden="true" ></i>
       <% end %>
     </div>
   </div>

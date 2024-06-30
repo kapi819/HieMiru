@@ -65,6 +65,46 @@
     margin: 5px;
   }
 
+  .btn-diary-delete {
+    background-color: #99E4FB1A;
+    border-radius: 5px;
+    margin: 5px;
+    border: 2px solid black;
+  }
+
+  .btn-diary-edit{
+    background-color: #78C8E6E6;
+    border-radius: 5px;
+    margin: 5px;
+    border: 2px solid black;
+  }
+
+  .physical-icon {
+    cursor: pointer;
+    margin: 20px 10px;
+  }
+
+  .physical-icon i {
+    font-size: 80px;
+  }
+
+  .physical-condition-options input[type="radio"]:checked + label i {
+    color: #78C8E6E6;
+  }
+
+  .mental-icon {
+    cursor: pointer;
+    margin: 20px 10px;
+  }
+
+  .mental-icon i {
+    font-size: 80px;
+  }
+
+  .mental-condition-options input[type="radio"]:checked + label i {
+    color: #78C8E6E6;
+  }
+
   .white-box {
     background-color: white;
     border-radius: 2px;
