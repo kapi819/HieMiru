@@ -38,6 +38,12 @@
     padding-top: 40px;
   }
 
+  .fixed-position {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+  }
+
   .btn-question {
     background-color: #99E4FB80;
     border-radius: 8px;
@@ -79,6 +85,16 @@
     border: 2px solid black;
   }
 
+  .btn-warning {
+    background-color: #ffd803;
+    border: none;
+  }
+
+  .btn-close {
+    background: none;
+    border: none;
+  }
+
   .physical-icon {
     cursor: pointer;
     margin: 20px 10px;
@@ -103,6 +119,47 @@
 
   .mental-condition-options input[type="radio"]:checked + label i {
     color: #78C8E6E6;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 1050;
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+  
+  .modal.show {
+    opacity: 1;
+  }
+  
+  .modal-dialog {
+    position: relative;
+    margin: auto;
+    top: 10%;
+    max-width: 500px;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-title {
+    color: #001858;
+  }
+  
+  .modal-text {
+    font-size: 0.875rem;
+    color: #172c66;
+    text-align: center;
   }
 
   .white-box {

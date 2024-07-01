@@ -1,13 +1,39 @@
-<%= form_with model: @goal, url: goals_path, method: :post, local: true do |f| %>
-  <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！" %>
-  <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first&.solution.to_s %>
+<div class="box">
+  <div class="white-box center">
+    <%= form_with model: @goal, url: goals_path, method: :post, local: true do |f| %>
+      <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！" %>
+      <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first&.solution.to_s %>
 
-  <% if current_user.cold_symptoms.any? %>
-    <%= f.hidden_field :cold_symptom_id, value: current_user.cold_symptoms.first.id %>
-  <% else %>
-    <%= f.hidden_field :cold_symptom_id, value: nil %>
-  <% end %>
-  
-  <%= f.hidden_field :count, value: 0 %>
-  <%= f.submit "登録", class: "btn btn-primary" %>
-<% end %>
+      <% if current_user.cold_symptoms.any? %>
+        <%= f.hidden_field :cold_symptom_id, value: current_user.cold_symptoms.first.id %>
+      <% else %>
+        <%= f.hidden_field :cold_symptom_id, value: nil %>
+      <% end %>
+      
+      <%= f.hidden_field :count, value: 0 %>
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<div class="fixed-position">
+  <button class="btn btn-mordal" id="openModalButton">
+    <i class="fa-solid fa-question fa-xl"></i>
+  </button>
+</div>
+
+<div class="modal" id="howToUseModal" tabindex="-1" aria-labelledby="howToUseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="howToUseModalLabel">使い方</h5>
+        <button type="button" class="btn-close" id="closeModalButton" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text text-start">
+          このページに表示されているQRコードをカメラで読み込んでください。LINE BOTの友達登録が出来、目標の達成状況を、日曜日に通知します。
+        </p>
+          <%= image_tag 'QRcode.png', style: 'max-height: 300px; width: auto;' %>
+      </div>
+    </div>
+  </div>
+</div>
