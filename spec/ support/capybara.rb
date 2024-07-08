@@ -10,15 +10,11 @@ Capybara.register_driver :remote_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :remote, url: "http://chrome:4444/wd/hub", capabilities: options)
 end
 
+Capybara.javascript_driver = :remote_chrome
+
 RSpec.configure do |config|
-  if ENV['CODEBUILD_BUILD_ID']
-    config.before(:each, type: :system) do
-      driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
-    end
-  else
-    config.before(:each, type: :system) do
-      driven_by :remote_chrome
-      Capybara.ignore_hidden_elements = false
-    end
+  config.before(:each, type: :system) do
+    driven_by :remote_chrome
+    Capybara.ignore_hidden_elements = false
   end
 end

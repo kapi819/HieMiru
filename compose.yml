@@ -10,6 +10,8 @@ services:
       - postgresql_data:/var/lib/postgresql
     ports:
       - 5432:5432
+    networks:
+      - my_network
   web:
     build:
       context: .
@@ -29,12 +31,18 @@ services:
     depends_on:
       - db
       - chrome
+    networks:
+      - my_network
   chrome:
     image: seleniarm/standalone-chromium:latest
-    shm_size: 512m
+    shm_size: 1g
     ports:
       - 4444:444
+    networks:
+      - my_network
 volumes:
   bundle_data:
   postgresql_data:
   node_modules:
+networks:
+  my_network:
