@@ -9,7 +9,7 @@ RSpec.describe "Users", type: :system do
     context 'LINEログインボタンを押した場合' do
       it 'ログインができる' do
         visit root_path
-        click_on  'line_login'
+        click_on 'line_login'
         expect(page).to have_content '冷え性を改善するための目標を設定しましょう！'
       end
     end
