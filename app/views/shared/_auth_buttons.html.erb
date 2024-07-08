@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-10 col-lg-8 mx-auto">
       <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'transparent-button' do %>
+        <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: 'transparent-button', id: "#{provider}_login" do %>
           <%= image_tag 'login.png' %>
         <% end %>
       <% end %>
