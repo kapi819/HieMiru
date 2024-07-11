@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update]
+  before_action :set_goal, only: [:show, :edit, :update, :check_record, :record]
 
   def index
   end
@@ -28,20 +28,20 @@ class GoalsController < ApplicationController
   end
 
   def check_record
-    already_recorded = @goal.records.where('created_at >= ?', Time.zone.now.beginning_of_day).exists?
+    already_recorded = @goal.updated_at >= Time.zone.now.beginning_of_day
     render json: { already_recorded: already_recorded }
   end
 
   def record
-    if @goal.records.where('created_at >= ?', Time.zone.now.beginning_of_day).exists?
+    if @goal.updated_at >= Time.zone.now.beginning_of_day
       render json: { error: 'You can only record once per day.' }, status: :forbidden
     else
       @goal = Goal.last || Goal.new(count: 0)
-      @goal.count += 1
+      @goal.increment!(:count)
     end
 
     if @goal.count > 7
-      @goal.count = 0
+      @goal.update!(count: 0)
     end
 
     if @goal.save
