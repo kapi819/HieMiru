@@ -12,7 +12,7 @@
               <div id="progress-text">
                 <p><%= @goal.count %>/7</p>
               </div>
-              <button id="record-button" data-goal-id="<%= @goal.id %>">記録</button>
+              <button id="record-button" data-goal-id="<%= @goal.id %>">今日の記録</button>
             </div>
           </div>
           <div id="comment-container"></div>
@@ -20,7 +20,7 @@
       </div>
       <div class="box">
         <div class="white-box center">
-          <h6>あなたの目標</h6>
+          <h6>あなたの設定した目標</h6>
           <h3><%= @goal.goal_body %></h3>
           <%= link_to '変更', edit_goal_path(@goal), class: 'btn btn-primary' %>
         </div>
