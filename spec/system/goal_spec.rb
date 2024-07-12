@@ -38,7 +38,7 @@ RSpec.describe "Goals", type: :system do
         click_on '登録'
       end
       it '設定した目標が記録画面に表示される' do
-        click_on '今日の記録'
+        click_on '達成'
         expect(page).to have_content '最初の一歩を踏み出しましたね！この調子で頑張りましょう！'
       end
     end
@@ -51,8 +51,8 @@ RSpec.describe "Goals", type: :system do
         click_on '登録'
       end
       it '今日はすでに記録されていると画面に表示される' do
-        click_on '今日の記録'
-        click_on '今日の記録'
+        click_on '達成'
+        click_on '達成'
         expect(page).to have_content '今日はすでに記録されています。'
       end
     end

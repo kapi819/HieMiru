@@ -24,19 +24,19 @@ document.addEventListener('turbo:load', () => {
   function getEncouragementMessage(count) {
     switch (count) {
       case 1:
-        return "最初の一歩を踏み出しましたね！この調子で頑張りましょう！";
+        return "最初の一歩を踏み出しましたね！<br>この調子で頑張りましょう！";
       case 2:
-        return "2回目の達成、おめでとうございます！確実に前進していますね。";
+        return "2回目の達成、おめでとうございます！<br>確実に前進していますね。";
       case 3:
-        return "3回目の目標達成、素晴らしいです！半分まで来ました！";
+        return "3回目の目標達成、素晴らしいです！<br>半分まで来ました！";
       case 4:
-        return "4回目の達成、お疲れ様です。あと少しでゴールです！";
+        return "4回目の達成、お疲れ様です。<br>あと少しでゴールです！";
       case 5:
-        return "5回目の目標達成、見事です！もうすぐ目標達成です。";
+        return "5回目の目標達成、見事です！<br>もうすぐ目標達成です。";
       case 6:
-        return "6回目の達成、おめでとうございます！あと一回で目標達成です！";
+        return "6回目の達成、おめでとうございます！<br>あと一回で目標達成です！";
       case 7:
-        return "目標達成、おめでとうございます！素晴らしい努力でした！";
+        return "目標達成、おめでとうございます！<br>素晴らしい努力でした！";
       default:
         return "";
     }
