@@ -11,6 +11,7 @@ gem "chartkick"
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem "redis"
+gem "meta-tags"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
