@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_020552) do
     t.bigint "cold_symptom_id"
     t.text "goal_body", null: false
     t.integer "count", default: 0, null: false
+    t.datetime "last_recorded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cold_symptom_id"], name: "index_goals_on_cold_symptom_id"
