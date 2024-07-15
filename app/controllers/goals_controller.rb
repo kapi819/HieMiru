@@ -35,7 +35,7 @@ class GoalsController < ApplicationController
       return
     else
       @goal.increment!(:count)
-      @goal.update!(last_recorded_at: Time.zone.now)
+      @goal.update!(last_recorded_at: Time.zone.now, updated_at: Time.zone.now)
     end
 
     if @goal.count > 7
