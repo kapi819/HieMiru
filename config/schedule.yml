@@ -1,4 +1,4 @@
 reminder_notification_job:
-  cron: "0 * * * *"
+  cron: "0 10 * * 0"
   class: "ReminderNotificationJob"
   
