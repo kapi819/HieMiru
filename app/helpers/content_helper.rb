@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# ContentHelper provides methods for managing content-related functionality
+
 module ContentHelper
   def resource_name
     :user

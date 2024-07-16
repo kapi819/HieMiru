@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# ReminderNotificationJob is responsible for sending reminder notifications to users.
+# This job is typically scheduled to run periodically to remind users about their tasks or goals.
+
 class ReminderNotificationJob < ApplicationJob
   queue_as :default
 
