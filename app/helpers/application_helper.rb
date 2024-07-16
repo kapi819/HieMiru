@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# ApplicationHelper provides helper methods that can be used across views in the application.
+# These methods can be used to encapsulate complex logic, making the views simpler and easier to maintain.
+
 module ApplicationHelper
   def page_title(title = '')
     base_title = 'Hie Miru'
