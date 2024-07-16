@@ -21,11 +21,11 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def transfer_session_data
-    if session[:answers] && current_user
-      session[:answers].each do |question_id, choice_id|
-        Answer.create(user_id: current_user.id,question_id: question_id,choice_id: choice_id)
-      end
-    session.delete(:answers)
+    return unless session[:answers] && current_user
+
+    session[:answers].each do |question_id, choice_id|
+      Answer.create(user_id: current_user.id, question_id:, choice_id:)
     end
+    session.delete(:answers)
   end
 end

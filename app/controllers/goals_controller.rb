@@ -1,9 +1,8 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :check_record, :record]
+  before_action :set_goal, only: %i[show edit update check_record record]
 
-  def show
-  end
-  
+  def show; end
+
   def new
     @goal = current_user.goals.build
   end
@@ -16,7 +15,7 @@ class GoalsController < ApplicationController
     Rails.logger.debug "Goal object before save: #{@goal.inspect}"
 
     if @goal.save
-      Rails.logger.debug "Goal successfully created"
+      Rails.logger.debug 'Goal successfully created'
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
       Rails.logger.error "Failed to create goal: #{@goal.errors.full_messages.join(', ')}"
@@ -26,7 +25,7 @@ class GoalsController < ApplicationController
 
   def check_record
     already_recorded = @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
-    render json: { already_recorded: already_recorded }
+    render json: { already_recorded: }
   end
 
   def record
@@ -38,9 +37,7 @@ class GoalsController < ApplicationController
       @goal.update!(last_recorded_at: Time.zone.now, updated_at: Time.zone.now)
     end
 
-    if @goal.count > 7
-      @goal.update!(count: 0)
-    end
+    @goal.update!(count: 0) if @goal.count > 7
 
     if @goal.save
       respond_to do |format|
@@ -53,8 +50,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @goal.update(goal_params)

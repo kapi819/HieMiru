@@ -1,27 +1,29 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def line; basic_action end
+  def line = basic_action
 
   private
+
   def basic_action
-    @omniauth = request.env["omniauth.auth"]
+    @omniauth = request.env['omniauth.auth']
     if @omniauth.present?
-      @profile = User.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
+      @profile = User.find_or_initialize_by(provider: @omniauth['provider'], uid: @omniauth['uid'])
       if @profile.email.blank?
-        email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
-        @profile = current_user || User.create!(provider: @omniauth["provider"], uid: @omniauth["uid"], email: email, name: @omniauth["info"]["name"], password: Devise.friendly_token[0, 20])
+        email = @omniauth['info']['email'] || "#{@omniauth['uid']}-#{@omniauth['provider']}@example.com"
+        @profile = current_user || User.create!(provider: @omniauth['provider'], uid: @omniauth['uid'], email:,
+                                                name: @omniauth['info']['name'], password: Devise.friendly_token[0, 20])
       end
       @profile.set_values(@omniauth)
       sign_in(:user, @profile)
     end
     @profile.set_values(@omniauth)
     sign_in(:user, @profile)
-    flash[:notice] = "ログインしました"
+    flash[:notice] = 'ログインしました'
     after_login
   end
 
   def after_login
-    Rails.logger.debug "Entering after_login method"
-    puts "Entering after_login method" # デバッグ用のputsを追加
+    Rails.logger.debug 'Entering after_login method'
+    puts 'Entering after_login method' # デバッグ用のputsを追加
     # current_userの情報をログ出力
     Rails.logger.debug "Current user: #{current_user.inspect}"
     puts "Current user: #{current_user.inspect}"

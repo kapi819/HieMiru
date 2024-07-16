@@ -1,13 +1,12 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  before_action :set_diary, only: %i[show edit update destroy]
 
   def index
     @diaries = user_diaries
     @today_diary = current_user.diaries.find_by(start_time: Date.today)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     if current_user.diaries.exists?(start_time: Date.today)
@@ -30,8 +29,7 @@ class DiariesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     Rails.logger.debug "Update Parameters: #{diary_params.inspect}"
@@ -39,7 +37,7 @@ class DiariesController < ApplicationController
       Rails.logger.debug "Updated Diary: #{@diary.inspect}"
       redirect_to @diary, notice: 'Diary was successfully updated.'
     else
-      flash.now[:error] = @diary.errors.full_messages.join(", ")
+      flash.now[:error] = @diary.errors.full_messages.join(', ')
       render :edit
     end
   end
@@ -67,7 +65,7 @@ class DiariesController < ApplicationController
   end
 
   def diary_params
-    params.require(:diary).permit(:start_time, :body_temperature, :weight, :body_fat, :physical_condition, :mental_condition)
+    params.require(:diary).permit(:start_time, :body_temperature, :weight, :body_fat, :physical_condition,
+                                  :mental_condition)
   end
-
 end

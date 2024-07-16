@@ -2,7 +2,7 @@ require 'sidekiq'
 require 'sidekiq-cron'
 
 Sidekiq.configure_server do |config|
-# Sidekiqサーバーの設定を開始 ブロック内の設定は、ジョブを実行するサーバー側で適用
+  # Sidekiqサーバーの設定を開始 ブロック内の設定は、ジョブを実行するサーバー側で適用
   schedule_file = 'config/schedule.yml'
   # 定期的に実行するジョブのスケジュールを記述したYAMLファイルのパスを指定
   config.redis = {
@@ -20,7 +20,7 @@ Sidekiq.configure_server do |config|
 end
 
 Sidekiq.configure_client do |config|
-# Sidekiqクライアントの設定を開始　この設定は、ジョブをキューに投入する側で適用
+  # Sidekiqクライアントの設定を開始　この設定は、ジョブをキューに投入する側で適用
   config.redis = {
     url: ENV['REDIS_URL'],
     # Redisへの接続設定 ENV['REDIS_URL']は環境変数からRedisサーバーのURLを取得

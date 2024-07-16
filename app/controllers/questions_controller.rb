@@ -33,9 +33,9 @@ class QuestionsController < ApplicationController
     @cold_symptom = ColdSymptom.find_by(symptom_type: @diagnosis)
     reset_answers_and_clear_user_data(current_user)
 
-    unless @cold_symptom
-      redirect_to root_path, alert: '診断結果が見つかりません。最初からやり直してください。'
-    end
+    return if @cold_symptom
+
+    redirect_to root_path, alert: '診断結果が見つかりません。最初からやり直してください。'
   end
 
   private
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
 
   def save_answers_to_db(user, answers)
     answers.each do |question_id, choice_id|
-      Answer.create(user_id: user.id, question_id: question_id, choice_id: choice_id)
+      Answer.create(user_id: user.id, question_id:, choice_id:)
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Diaries", type: :system do
+RSpec.describe 'Diaries', type: :system do
   describe '体調の分析' do
     context '分析を記録した場合' do
       before do
