@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# DiariesController handles actions related to the Diary model.
+# It allows users to create, update, show, and delete diary entries.
+# Additionally, it manages the recording of physical and mental conditions.
+
 class DiariesController < ApplicationController
   before_action :set_diary, only: %i[show edit update destroy]
 
@@ -32,9 +38,7 @@ class DiariesController < ApplicationController
   def edit; end
 
   def update
-    Rails.logger.debug "Update Parameters: #{diary_params.inspect}"
     if @diary.update(diary_params)
-      Rails.logger.debug "Updated Diary: #{@diary.inspect}"
       redirect_to @diary, notice: 'Diary was successfully updated.'
     else
       flash.now[:error] = @diary.errors.full_messages.join(', ')

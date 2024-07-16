@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# OmniauthCallbacksController handles the callback phase of OmniAuth.
+# It processes the authentication data from OmniAuth and performs actions
+# like signing in or creating a new user.
+
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def line = basic_action
 
