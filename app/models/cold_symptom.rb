@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# ColdSymptom represents a specific type of cold sensitivity symptom.
+# It contains information about the symptom type, title, description, and solutions.
+# ColdSymptom is associated with user goals and answers in the diagnostic system.
+
 class ColdSymptom < ApplicationRecord
   belongs_to :user
   has_many :goals
