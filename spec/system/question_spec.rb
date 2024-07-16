@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Questions", type: :system, js: true do
+RSpec.describe 'Questions', type: :system, js: true do
   describe '診断結果' do
     let(:user_a) { create(:user) }
 

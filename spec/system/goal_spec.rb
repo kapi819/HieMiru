@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Goals", type: :system do
+RSpec.describe 'Goals', type: :system do
   describe '目標設定' do
     context '目標を設定した場合' do
       before do
         line_login
         user = User.last
-        create(:cold_symptom, :type_0, user: user)
+        create(:cold_symptom, :type_0, user:)
       end
       it '設定した目標が記録画面に表示される' do
         fill_in '冷え性を改善するための目標を設定しましょう！', with: 'ジムに行く'
@@ -19,7 +19,7 @@ RSpec.describe "Goals", type: :system do
       before do
         line_login
         user = User.last
-        create(:cold_symptom, :type_0, user: user)
+        create(:cold_symptom, :type_0, user:)
       end
       it '新規作成の画面が表示される' do
         click_on '登録'
@@ -33,7 +33,7 @@ RSpec.describe "Goals", type: :system do
       before do
         line_login
         user = User.last
-        create(:cold_symptom, :type_0, user: user)
+        create(:cold_symptom, :type_0, user:)
         fill_in '冷え性を改善するための目標を設定しましょう！', with: 'ジムに行く'
         click_on '登録'
       end
@@ -46,7 +46,7 @@ RSpec.describe "Goals", type: :system do
       before do
         line_login
         user = User.last
-        create(:cold_symptom, :type_0, user: user)
+        create(:cold_symptom, :type_0, user:)
         fill_in '冷え性を改善するための目標を設定しましょう！', with: 'ジムに行く'
         click_on '登録'
       end
@@ -63,7 +63,7 @@ RSpec.describe "Goals", type: :system do
       before do
         line_login
         user = User.last
-        create(:cold_symptom, :type_0, user: user)
+        create(:cold_symptom, :type_0, user:)
         fill_in '冷え性を改善するための目標を設定しましょう！', with: 'ジムに行く'
         click_on '登録'
       end

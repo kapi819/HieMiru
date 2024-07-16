@@ -6,7 +6,7 @@ class CreateGoals < ActiveRecord::Migration[7.1]
       t.text :goal_body, null: false
       t.integer :count, null: false, default: 0
       t.datetime :last_recorded_at
-      
+
       t.timestamps
     end
   end
