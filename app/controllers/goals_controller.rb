@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# GoalsController handles actions related to the Goal model.
+# It allows users to create, update, show, and delete goals.
+# Additionally, it manages the recording of goal achievements.
+
 class GoalsController < ApplicationController
   before_action :set_goal, only: %i[show edit update check_record record]
 
@@ -11,14 +17,9 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.build(goal_params)
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
 
-    Rails.logger.debug "Goal params: #{goal_params.inspect}"
-    Rails.logger.debug "Goal object before save: #{@goal.inspect}"
-
     if @goal.save
-      Rails.logger.debug 'Goal successfully created'
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
-      Rails.logger.error "Failed to create goal: #{@goal.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -29,25 +30,16 @@ class GoalsController < ApplicationController
   end
 
   def record
-    if @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
+    if already_recorded_today?
       render json: { error: 'You can only record once per day.' }, status: :forbidden
       return
-    else
-      @goal.increment!(:count)
-      @goal.update!(last_recorded_at: Time.zone.now, updated_at: Time.zone.now)
     end
 
-    @goal.update!(count: 0) if @goal.count > 7
+    update_goal_record
 
-    if @goal.save
-      respond_to do |format|
-        format.json { render json: { count: @goal.count } }
-      end
-    else
-      respond_to do |format|
-        format.json { render json: { error: 'Failed to record goal' }, status: :unprocessable_entity }
-      end
-    end
+    reset_goal_count if @goal.count > 7
+
+    respond_to_goal_save
   end
 
   def edit; end
@@ -68,5 +60,30 @@ class GoalsController < ApplicationController
 
   def goal_params
     params.require(:goal).permit(:goal_body, :cold_symptom_id, :count)
+  end
+
+  def already_recorded_today?
+    @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
+  end
+
+  def update_goal_record
+    @goal.increment!(:count)
+    @goal.update!(last_recorded_at: Time.zone.now, updated_at: Time.zone.now)
+  end
+
+  def reset_goal_count
+    @goal.update!(count: 0)
+  end
+
+  def respond_to_goal_save
+    if @goal.save
+      respond_to do |format|
+        format.json { render json: { count: @goal.count } }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: { error: 'Failed to record goal' }, status: :unprocessable_entity }
+      end
+    end
   end
 end

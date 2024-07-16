@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# ApplicationController is the base controller for all controllers in this application.
+# It handles common functionalities that are shared across all controllers.
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
   before_action :authenticate_user!

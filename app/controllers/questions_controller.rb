@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# QuestionsController handles actions related to the Question model.
+# It allows users to create, update, show, and delete questions.
+# Additionally, it manages the listing of questions.
+
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!
 
@@ -10,11 +16,10 @@ class QuestionsController < ApplicationController
     if current_user
       save_answers_to_db(current_user, answers)
       session.delete(:answers)
-      redirect_to result_questions_path
     else
       session[:answers] = answers
-      redirect_to result_questions_path
     end
+    redirect_to result_questions_path
   end
 
   def result
@@ -27,6 +32,7 @@ class QuestionsController < ApplicationController
         @diagnosis = User.diagnose_from_choice_ids(choice_ids)
       else
         redirect_to root_path, alert: '診断を最初からやり直してください。'
+        return
       end
     end
 
@@ -51,7 +57,7 @@ class QuestionsController < ApplicationController
   end
 
   def reset_answers_and_clear_user_data(user)
-    user.answers.destroy_all if user # ログインユーザーの回答を削除
+    user&.answers&.destroy_all
     session.delete(:answers)
   end
 end
