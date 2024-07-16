@@ -44,12 +44,11 @@
       - 診断結果に応じた改善策のリコメンド機能
    2. 目標設定機能
       - 日々の目標設定機能
-   3. スケジュール管理機能
-      - カレンダーでのスケジュール管理機能
-      - 目標設定に応じたリマインド機能（LINE通知）
-   4. データ分析機能
+      - 円グラフを用いた目標記録機能
+      - LINE通知を用いた目標達成のリマインド機能
+   3. データ分析機能
       - その日の情報記録機能(基礎体温・体重・体脂肪・体調・気分)
-      - 上記情報の分析機能
+      - 上記情報のカレンダーや棒グラフを用いた分析機能
 
 **本リリース後**
    1. コミュニティ機能
@@ -63,10 +62,10 @@
 | カテゴリ       | 技術                                     |
 | ------------- | -------------                           |
 | バックエンド    | Ruby / Ruby on Rails                    |
-| データベース    | PostgreSQL / TailWind　CSS              |
+| データベース    | PostgreSQL / Bootstrap                  |
 | 環境構築       | Docker                                  |
 | インフラ       | Render                                  |
-| Web API      | LINE Messaging API / OpenWeatherMap API  |
+| Web API      | LINE Messaging API                       |
 
 # 画面推移図
 Figma URL：https://www.figma.com/file/wqLqj8RVZpQrRhGesPe8Ec/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?type=design&node-id=0%3A1&mode=design&t=hjroMIFOay3tew5V-1
