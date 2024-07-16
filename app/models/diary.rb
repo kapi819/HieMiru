@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# Diary represents a daily log of the user's physical and mental condition.
+# It includes attributes for body temperature, weight, body fat, physical condition, and mental condition.
+# Each diary entry is associated with a user and records the user's health metrics and conditions for the day.
+
 class Diary < ApplicationRecord
   belongs_to :user
 

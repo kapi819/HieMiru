@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# User represents a user in the application.
+# Each user can have many goals, answers, and other related models.
+# Devise is used for authentication.
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -49,7 +55,7 @@ class User < ApplicationRecord
 
     puts "A Count: #{a_count}, B Count: #{b_count}, C Count: #{c_count}, D Count: #{d_count}"
 
-    if a_count > b_count && a_count > c_count && d_count > 0
+    if a_count > b_count && a_count > c_count && d_count.positive?
       ColdSymptom.symptom_types[:systemic]
     elsif a_count > b_count && a_count > c_count
       ColdSymptom.symptom_types[:peripheral]

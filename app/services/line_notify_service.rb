@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# LineNotifyService handles notifications via LINE Notify API.
+# This class provides methods to send notifications to LINE.
+
 require 'net/http'
 require 'uri'
 require 'json'
