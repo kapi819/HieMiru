@@ -2,11 +2,15 @@
   <div class="white-box center">
     <%= form_with model: @goal, url: goals_path, method: :post, local: true do |f| %>
       <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！" %>
-      <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first&.solution.to_s %>
+      <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first %>
 
-      <% if current_user.cold_symptoms.any? %>
+      <% if current_user.cold_symptoms.present? %>
         <%= f.hidden_field :cold_symptom_id, value: current_user.cold_symptoms.first.id %>
+        <%= "あなたは、#{@goal.cold_symptom.localized_symptom_type}なので、" %><br>
+        <%= @goal.cold_symptom.solution %><br>
+        <%= "の目標設定がおすすめです！" %>
       <% else %>
+        <% Rails.logger.info "No cold symptoms found for current user" %>
         <%= f.hidden_field :cold_symptom_id, value: nil %>
       <% end %>
       
@@ -25,7 +29,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="howToUseModalLabel">使い方</h5>
+        <h5 class="modal-title" id="howToUseModalLabel">通知設定</h5>
         <button type="button" class="btn-close" id="closeModalButton" aria-label="Close"></button>
       </div>
       <div class="modal-body">
