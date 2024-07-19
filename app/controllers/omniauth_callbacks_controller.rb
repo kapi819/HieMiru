@@ -23,26 +23,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     @profile.set_values(@omniauth)
     sign_in(:user, @profile)
-    flash[:notice] = 'ログインしました'
     after_login
   end
 
   def after_login
-    Rails.logger.debug 'Entering after_login method'
-    puts 'Entering after_login method' # デバッグ用のputsを追加
-    # current_userの情報をログ出力
-    Rails.logger.debug "Current user: #{current_user.inspect}"
-    puts "Current user: #{current_user.inspect}"
-    # current_user.goalsの内容をログ出力
-    Rails.logger.debug "Goals: #{current_user.goals.to_a.inspect}"
-    puts "Goals: #{current_user.goals.to_a.inspect}"
     if current_user.goals.present?
-      # first_goalの内容をログ出力
-      Rails.logger.debug "First goal: #{current_user.goals.first.inspect}"
-      puts "First goal: #{current_user.goals.first.inspect}"
-      redirect_to goal_path(current_user.goals.first)
+      redirect_to goal_path(current_user.goals.first), success: t('omniauth_callbacks.after_login.success')
     else
-      redirect_to new_goal_path
+      redirect_to new_goal_path, success: t('omniauth_callbacks.after_login.success')
     end
   end
 

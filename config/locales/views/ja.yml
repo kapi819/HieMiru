@@ -4,21 +4,43 @@ ja:
       title: 診断
     result:
       title: 診断結果
+      alert: 診断を最初からやり直してください。
   users:
     show:
       title: マイページ
   goals:
     edit:
       title: 記録編集
+    update:
+      success: 目標を更新しました
+      failure: 目標の更新に失敗しました
     show:
       title: 目標記録
     new:
       title: 記録
+    create:
+      success: 目標を作成しました
+      failure: 目標の作成に失敗しました
+    check_record:
+      alert: 今日はすでに記録されています。
+    record:
+      alert: 今日はすでに記録されています。
   diaries:
     index:
       title: 分析
     new:
       title: 記録
+      alert: 本日の記録は既に作成されています。
+    create:
+      alert: 本日の記録は既に作成されています。
+      success: 本日の記録を作成しました
+      failure: 記録の作成に失敗しました
+    update:
+      success: 記録を更新しました
+      failure: 記録の更新に失敗しました
+    destroy:
+      success: 記録を削除しました
+      failure: 記録を削除に失敗しました
     show:
       title: 記録詳細
     edit:
@@ -30,3 +52,10 @@ ja:
       title: プライバシーポリシー
     terms:
       title: 利用規約
+  omniauth_callbacks:
+    after_login:
+      success: ログインしました
+  users:
+    sessions:
+      sign_out:
+        success: ログアウトしました
