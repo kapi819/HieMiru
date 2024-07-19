@@ -11,7 +11,7 @@
         </div>
         <div class="container mx-auto text-center">
           <%= form_with url: questions_path, method: :post, data: { turbo: false } do |f| %>
-          <div class="error-message hidden text-sm" id="error_message">選択してください</div>
+          <div class="error-message hidden text-danger text-sm" id="error_message">選択してください</div>
             <% @questions.each_with_index do |question, index| %>
               <div id="question_<%= index + 1 %>" class="hidden">
                 <h2 class="text-center">Q<%= index + 1 %></h2>

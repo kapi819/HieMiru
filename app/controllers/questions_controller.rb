@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
         choice_ids = answers.values
         @diagnosis = User.diagnose_from_choice_ids(choice_ids)
       else
-        redirect_to root_path, alert: '診断を最初からやり直してください。'
+        redirect_to root_path, alert: t('questions.create.alert')
         return
       end
     end
@@ -62,8 +62,6 @@ class QuestionsController < ApplicationController
     reset_answers_and_clear_user_data(current_user)
 
     return if @cold_symptom
-
-    redirect_to root_path, alert: '診断結果が見つかりません。最初からやり直してください。'
   end
 
   private

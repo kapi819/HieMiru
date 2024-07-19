@@ -16,7 +16,7 @@ class DiariesController < ApplicationController
 
   def new
     if current_user.diaries.exists?(start_time: Date.today)
-      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
+      redirect_to diaries_path, alert: t('diaries.new.alert')
     else
       @diary = Diary.new
     end
@@ -24,13 +24,14 @@ class DiariesController < ApplicationController
 
   def create
     if current_user.diaries.exists?(start_time: Date.today)
-      redirect_to diaries_path, alert: '本日の記録は既に作成されています。'
+      redirect_to diaries_path, alert: t('diaries.create.alert')
     else
       @diary = current_user.diaries.new(diary_params)
       if @diary.save
-        redirect_to @diary
+        redirect_to @diary, success: t('diaries.create.success')
       else
-        render :new
+        flash.now[:danger] = t('diaries.create.failure')
+        render :new, status: :unprocessable_entity
       end
     end
   end
@@ -39,21 +40,18 @@ class DiariesController < ApplicationController
 
   def update
     if @diary.update(diary_params)
-      redirect_to @diary, notice: 'Diary was successfully updated.'
+      redirect_to @diary, success: t('diaries.update.success')
     else
-      flash.now[:error] = @diary.errors.full_messages.join(', ')
-      render :edit
+      flash.now[:danger] = t('diaries.update.failure')
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    logger.debug "Destroy action called for Diary ID: #{@diary.id}"
     if @diary.destroy
-      logger.debug "Diary ID: #{@diary.id} successfully destroyed."
-      redirect_to diaries_url, notice: 'Diary was successfully destroyed.'
+      redirect_to diaries_url, success: t('diaries.destroy.success')
     else
-      logger.debug "Failed to destroy Diary ID: #{@diary.id}"
-      redirect_to diaries_url, alert: 'Failed to destroy the diary.'
+      redirect_to diaries_url, failure: t('diaries.destroy.failure')
     end
   end
 
@@ -65,7 +63,7 @@ class DiariesController < ApplicationController
   end
 
   def user_diaries
-    current_user.diaries.order(:start_time) # 日付順に並び替え
+    current_user.diaries.order(:start_time)
   end
 
   def diary_params

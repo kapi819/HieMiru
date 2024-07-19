@@ -18,15 +18,17 @@ class GoalsController < ApplicationController
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
 
     if @goal.save
-      redirect_to @goal, notice: 'Goal was successfully created.'
+      redirect_to @goal, success: t('goals.create.success')
     else
-      render :new
+      flash.now[:danger] = t('goals.create.failure')
+      render :new, status: :unprocessable_entity
     end
   end
 
   def check_record
     already_recorded = @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
-    render json: { already_recorded: }
+    redirect_to @goal, success: t('goals.update.success')
+    render :show, status: :unprocessable_entity
   end
 
   def record
@@ -46,9 +48,10 @@ class GoalsController < ApplicationController
 
   def update
     if @goal.update(goal_params)
-      redirect_to @goal, notice: 'Goal was successfully updated.'
+      redirect_to @goal, success: t('goals.update.success')
     else
-      render :edit
+      flash.now[:danger] = t('goals.update.failure')
+      render :edit, status: :unprocessable_entity
     end
   end
 
