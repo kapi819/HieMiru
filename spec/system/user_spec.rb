@@ -10,6 +10,7 @@ RSpec.describe 'Users', type: :system do
       it 'ログインができる' do
         visit root_path
         click_on 'line_login'
+        expect(page).to have_content 'ログインしました'
         expect(page).to have_content '冷え性を改善するための目標を設定しましょう！'
       end
     end
@@ -21,6 +22,7 @@ RSpec.describe 'Users', type: :system do
         line_login
         find('.navbar .nav-link', text: 'メニュー').click
         click_on 'ログアウト'
+        expect(page).to have_content 'ログアウトしました'
         expect(page).to have_content '健康な毎日は冷え改善から。'
         expect(current_path).to eq root_path
       end

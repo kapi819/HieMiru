@@ -22,17 +22,17 @@ ja:
       success: 目標を作成しました
       failure: 目標の作成に失敗しました
     check_record:
-      alert: 今日はすでに記録されています。
+      alert: 今日はすでに記録されています
     record:
-      alert: 今日はすでに記録されています。
+      alert: 今日はすでに記録されています
   diaries:
     index:
       title: 分析
     new:
       title: 記録
-      alert: 本日の記録は既に作成されています。
+      alert: 本日の記録は既に作成されています
     create:
-      alert: 本日の記録は既に作成されています。
+      alert: 本日の記録は既に作成されています
       success: 本日の記録を作成しました
       failure: 記録の作成に失敗しました
     update:
