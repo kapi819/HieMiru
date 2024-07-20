@@ -2,7 +2,6 @@ name: Run rspec, rubocop
 
 on:
   push:
-  pull_request:
 
 env:
   RENDER_DB_URL: ${{secrets.RENDER_DB_URL}}
@@ -19,6 +18,10 @@ jobs:
         image: postgres
         ports:
           - 5432:5432
+      chrome:
+        image: selenium/standalone-chrome:latest
+      ports:
+        - 44444:4444
 
     steps:
       - name: Checkout code
