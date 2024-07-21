@@ -2,7 +2,6 @@ name: Run rspec, rubocop
 
 on:
   push:
-  pull_request:
 
 env:
   RENDER_DB_URL: ${{secrets.RENDER_DB_URL}}
@@ -19,6 +18,10 @@ jobs:
         image: postgres
         ports:
           - 5432:5432
+      chrome:
+        image: seleniarm/standalone-chromium:latest
+        ports:
+          - 4444:4444
 
     steps:
       - name: Checkout code
@@ -28,6 +31,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 120
+          install-dependencies: true
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -44,6 +53,17 @@ jobs:
 
       - name: Yarn install
         run: yarn install --check-files
+
+      - name: Check for port conflicts and set CAPYBARA_PORT
+        run: |
+          PORT=4444
+          if lsof -i:$PORT; then
+            echo "Port $PORT is in use, killing the process"
+            lsof -ti:$PORT | xargs kill -9
+          fi
+          CAPYBARA_PORT=3001
+          echo "CAPYBARA_PORT=$CAPYBARA_PORT" >> $GITHUB_ENV
+          echo "DEBUG: Capybara port set to $CAPYBARA_PORT"
 
       - name: Database create and migrate
         run: |
