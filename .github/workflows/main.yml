@@ -84,6 +84,7 @@ jobs:
           CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
 
       - name: Check port usage after tests
+        if: always()
         run: |
           echo "DEBUG: Checking port 4444 usage"
           lsof -i :4444
