@@ -9,7 +9,6 @@ Capybara.register_driver :remote_chrome do |app|
   options.add_argument('window-size=1680,1050')
 
   driver_url = ENV['SELENIUM_DRIVER_URL'] || 'http://localhost:4444/wd/hub'
-  puts "DEBUG: Using Selenium driver URL: #{driver_url}"
 
   Capybara::Selenium::Driver.new(app, browser: :remote, url: driver_url, capabilities: options)
 end

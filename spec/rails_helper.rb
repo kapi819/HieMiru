@@ -71,14 +71,6 @@ RSpec.configure do |config|
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     Capybara.server_port = 4444
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-    puts "DEBUG: Capybara server_host: #{Capybara.server_host}, server_port: #{Capybara.server_port}, app_host: #{Capybara.app_host}"
     Capybara.ignore_hidden_elements = false
-  end
-
-  config.after(:each, type: :system) do
-    puts "DEBUG: Checking port 4444 usage"
-    system('lsof -i :4444 || echo "Port 4444 is not in use"')
-    puts "DEBUG: Checking port 3001 usage"
-    system('lsof -i :3001 || echo "Port 3001 is not in use"')
   end
 end
