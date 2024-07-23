@@ -87,9 +87,9 @@ jobs:
         if: always()
         run: |
           echo "DEBUG: Checking port 4444 usage"
-          lsof -i :4444
+          lsof -i :4444 || true
           echo "DEBUG: Checking port 3001 usage"
-          lsof -i :3001
+          lsof -i :3001 || true
 
   rubocop:
     runs-on: ubuntu-latest
