@@ -20,6 +20,7 @@ RSpec.describe 'Diaries', type: :system do
       end
       it '本日の記録は既に作成されていると表示される' do
         find('.navbar .nav-link', text: '分析').click
+        expect(page).to have_content '本日の記録を作成しました'
         expect(page).to have_content '本日の記録は既に作成されています'
         expect(current_path).to eq diaries_path
       end
