@@ -9,49 +9,49 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = user_diaries
-    @today_diary = current_user.diaries.find_by(start_time: Date.today)
+    @today_diary = current_user.diaries.find_by(start_time: Time.zone.today)
   end
 
   def show; end
 
   def new
-    if current_user.diaries.exists?(start_time: Date.today)
-      redirect_to diaries_path, alert: t('diaries.new.alert')
+    if current_user.diaries.exists?(start_time: Time.zone.today)
+      redirect_to diaries_path, alert: t('.alert')
     else
       @diary = Diary.new
     end
   end
 
+  def edit; end
+
   def create
-    if current_user.diaries.exists?(start_time: Date.today)
-      redirect_to diaries_path, alert: t('diaries.create.alert')
+    if current_user.diaries.exists?(start_time: Time.zone.today)
+      redirect_to diaries_path, alert: t('.alert')
     else
       @diary = current_user.diaries.new(diary_params)
       if @diary.save
-        redirect_to @diary, success: t('diaries.create.success')
+        redirect_to @diary, success: t('.success')
       else
-        flash.now[:danger] = t('diaries.create.failure')
+        flash.now[:danger] = t('.failure')
         render :new, status: :unprocessable_entity
       end
     end
   end
 
-  def edit; end
-
   def update
     if @diary.update(diary_params)
-      redirect_to @diary, success: t('diaries.update.success')
+      redirect_to @diary, success: t('.success')
     else
-      flash.now[:danger] = t('diaries.update.failure')
+      flash.now[:danger] = t('.failure')
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     if @diary.destroy
-      redirect_to diaries_url, success: t('diaries.destroy.success')
+      redirect_to diaries_url, success: t('.success')
     else
-      redirect_to diaries_url, failure: t('diaries.destroy.failure')
+      redirect_to diaries_url, failure: t('.failure')
     end
   end
 
@@ -59,7 +59,7 @@ class DiariesController < ApplicationController
 
   def set_diary
     @diary = Diary.find(params[:id])
-    Rails.logger.debug "Set Diary for ID: #{@diary.id}"
+    Rails.logger.debug { "Set Diary for ID: #{@diary.id}" }
   end
 
   def user_diaries
