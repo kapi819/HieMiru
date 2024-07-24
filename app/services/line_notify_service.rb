@@ -15,7 +15,7 @@ class LineNotifyService
     # 上で解析したURIを使ってPOSTリクエストのオブジェクトを生成
     request.content_type = 'application/json'
     # リクエストのコンテンツタイプをJSONに設定
-    request['Authorization'] = "Bearer #{ENV['LINE_CHANNEL_TOKEN']}"
+    request['Authorization'] = "Bearer #{ENV.fetch('LINE_CHANNEL_TOKEN', nil)}"
     # 環境変数から取得したLINEチャネルトークンを使用して、認証ヘッダーを設定
     request.body = JSON.dump({
                                to: uid,
@@ -23,9 +23,9 @@ class LineNotifyService
                              })
     # リクエストボディに、送信先のユーザー識別子と、送信するメッセージの内容をJSON形式で設定
     # デバッグログを追加
-    Rails.logger.debug "Request URI: #{uri}"
-    Rails.logger.debug "Request Headers: #{request.each_header.to_h}"
-    Rails.logger.debug "Request Body: #{request.body}"
+    Rails.logger.debug { "Request URI: #{uri}" }
+    Rails.logger.debug { "Request Headers: #{request.each_header.to_h}" }
+    Rails.logger.debug { "Request Body: #{request.body}" }
 
     req_options = { use_ssl: uri.scheme == 'https', read_timeout: 10, open_timeout: 5 }
     # リクエストオプションを設定
@@ -35,9 +35,9 @@ class LineNotifyService
     end
     # 上記で設定したオプションを用いてHTTPリクエストを送信し、レスポンスを受け取る
     # レスポンスをデバッグログに記録
-    Rails.logger.debug "Response Code: #{response.code}"
-    Rails.logger.debug "Response Message: #{response.message}"
-    Rails.logger.debug "Response Body: #{response.body}"
+    Rails.logger.debug { "Response Code: #{response.code}" }
+    Rails.logger.debug { "Response Message: #{response.message}" }
+    Rails.logger.debug { "Response Body: #{response.body}" }
 
     handle_response(response)
   end

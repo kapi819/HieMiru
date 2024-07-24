@@ -6,7 +6,7 @@ Sidekiq.configure_server do |config|
   schedule_file = 'config/schedule.yml'
   # 定期的に実行するジョブのスケジュールを記述したYAMLファイルのパスを指定
   config.redis = {
-    url: ENV['REDIS_URL'],
+    url: ENV.fetch('REDIS_URL', nil),
     # Redisへの接続設定 ENV['REDIS_URL']は環境変数からRedisサーバーのURLを取得
     connect_timeout: 5,
     read_timeout: 5,
@@ -22,7 +22,7 @@ end
 Sidekiq.configure_client do |config|
   # Sidekiqクライアントの設定を開始　この設定は、ジョブをキューに投入する側で適用
   config.redis = {
-    url: ENV['REDIS_URL'],
+    url: ENV.fetch('REDIS_URL', nil),
     # Redisへの接続設定 ENV['REDIS_URL']は環境変数からRedisサーバーのURLを取得
     connect_timeout: 5,
     read_timeout: 5,

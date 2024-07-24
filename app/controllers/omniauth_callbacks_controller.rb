@@ -18,10 +18,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @profile = current_user || User.create!(provider: @omniauth['provider'], uid: @omniauth['uid'], email:,
                                                 name: @omniauth['info']['name'], password: Devise.friendly_token[0, 20])
       end
-      @profile.set_values(@omniauth)
+      @profile.update_from_omniauth(@omniauth)
       sign_in(:user, @profile)
     end
-    @profile.set_values(@omniauth)
+    @profile.update_from_omniauth(@omniauth)
     sign_in(:user, @profile)
     after_login
   end

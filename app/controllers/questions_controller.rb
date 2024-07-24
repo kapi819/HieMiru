@@ -39,29 +39,29 @@ class QuestionsController < ApplicationController
     @cold_symptom = ColdSymptom.find_by(symptom_type: @diagnosis)
 
     @cold_symptom_new = ColdSymptom.new(
-    user_id: current_user&.id || nil,
-    symptom_type: @diagnosis,
-    symptom_title: @cold_symptom.symptom_title,
-    symptom_body: @cold_symptom.symptom_body,
-    solution: @cold_symptom.solution,
-    image_url: @cold_symptom.image_url,
+      user_id: current_user&.id || nil,
+      symptom_type: @diagnosis,
+      symptom_title: @cold_symptom.symptom_title,
+      symptom_body: @cold_symptom.symptom_body,
+      solution: @cold_symptom.solution,
+      image_url: @cold_symptom.image_url
     )
 
-  if @cold_symptom_new.save
-    Rails.logger.info "ColdSymptom saved successfully: #{@cold_symptom_new.inspect}"
-  else
-    Rails.logger.error "Failed to save ColdSymptom: #{@cold_symptom_new.errors.full_messages.join(', ')}"
-    Rails.logger.error "ColdSymptom object: #{@cold_symptom_new.inspect}"
-    @cold_symptom_new.errors.details.each do |attribute, error_details|
-      error_details.each do |error_detail|
-        Rails.logger.error "Error on attribute #{attribute}: #{error_detail[:error]}"
+    if @cold_symptom_new.save
+      Rails.logger.info "ColdSymptom saved successfully: #{@cold_symptom_new.inspect}"
+    else
+      Rails.logger.error "Failed to save ColdSymptom: #{@cold_symptom_new.errors.full_messages.join(', ')}"
+      Rails.logger.error "ColdSymptom object: #{@cold_symptom_new.inspect}"
+      @cold_symptom_new.errors.details.each do |attribute, error_details|
+        error_details.each do |error_detail|
+          Rails.logger.error "Error on attribute #{attribute}: #{error_detail[:error]}"
+        end
       end
     end
-  end
 
     reset_answers_and_clear_user_data(current_user)
 
-    return if @cold_symptom
+    nil if @cold_symptom
   end
 
   private

@@ -13,20 +13,22 @@ class GoalsController < ApplicationController
     @goal = current_user.goals.build
   end
 
+  def edit; end
+
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
 
     if @goal.save
-      redirect_to @goal, success: t('goals.create.success')
+      redirect_to @goal, success: t('.success')
     else
-      flash.now[:danger] = t('goals.create.failure')
+      flash.now[:danger] = t('.failure')
       render :new, status: :unprocessable_entity
     end
   end
 
   def check_record
-    already_recorded = @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
+    @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
     redirect_to @goal, success: t('goals.update.success')
     render :show, status: :unprocessable_entity
   end
@@ -37,20 +39,16 @@ class GoalsController < ApplicationController
       return
     end
 
-    update_goal_record
-
     reset_goal_count if @goal.count > 7
 
     respond_to_goal_save
   end
 
-  def edit; end
-
   def update
     if @goal.update(goal_params)
-      redirect_to @goal, success: t('goals.update.success')
+      redirect_to @goal, success: t('.success')
     else
-      flash.now[:danger] = t('goals.update.failure')
+      flash.now[:danger] = t('.failure')
       render :edit, status: :unprocessable_entity
     end
   end
@@ -67,11 +65,6 @@ class GoalsController < ApplicationController
 
   def already_recorded_today?
     @goal.last_recorded_at && @goal.last_recorded_at >= Time.zone.now.beginning_of_day
-  end
-
-  def update_goal_record
-    @goal.increment!(:count)
-    @goal.update!(last_recorded_at: Time.zone.now, updated_at: Time.zone.now)
   end
 
   def reset_goal_count

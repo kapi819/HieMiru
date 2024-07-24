@@ -4,8 +4,8 @@
 # Each question has a title and can have multiple choices associated with it.
 
 class Question < ApplicationRecord
-  has_many :answers
-  has_many :choices
+  has_many :answers, dependent: :destroy
+  has_many :choices, dependent: :destroy
 
   validates :question_title, presence: true
 
