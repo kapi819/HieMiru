@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
+    @cold_symptom = current_user.cold_symptoms.first
 
     if @goal.save
       redirect_to @goal, success: t('.success')
@@ -47,6 +48,7 @@ class GoalsController < ApplicationController
   end
 
   def update
+    @cold_symptom = current_user.cold_symptoms.first
     if @goal.update(goal_params)
       redirect_to @goal, success: t('.success')
     else
