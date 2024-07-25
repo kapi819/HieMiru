@@ -5,9 +5,9 @@
       <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first %>
 
       <% if current_user.cold_symptoms.present? %>
-        <%= f.hidden_field :cold_symptom_id, value: current_user.cold_symptoms.first.id %>
-        <%= "あなたは、#{@goal.cold_symptom.localized_symptom_type}なので、" %><br>
-        <%= @goal.cold_symptom.solution %><br>
+        <%= f.hidden_field :cold_symptom_id, value: @cold_symptom.id %>
+        <%= "あなたは、#{@cold_symptom.localized_symptom_type}なので、" %><br>
+        <%= @cold_symptom.solution %><br>
         <%= "の目標設定がおすすめです！" %>
       <% else %>
         <% Rails.logger.info "No cold symptoms found for current user" %>

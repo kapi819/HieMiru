@@ -11,13 +11,17 @@ class GoalsController < ApplicationController
 
   def new
     @goal = current_user.goals.build
+    @cold_symptom = current_user.cold_symptoms.first
   end
 
-  def edit; end
+  def edit
+    @cold_symptom = current_user.cold_symptoms.first
+  end
 
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.cold_symptom_id ||= ColdSymptom.first&.id
+    @cold_symptom = current_user.cold_symptoms.first
 
     if @goal.save
       redirect_to @goal, success: t('.success')
@@ -38,13 +42,13 @@ class GoalsController < ApplicationController
       render json: { error: 'You can only record once per day.' }, status: :forbidden
       return
     end
-
+    @goal.update(count: @goal.count + 1, last_recorded_at: Time.zone.now)
     reset_goal_count if @goal.count > 7
-
     respond_to_goal_save
   end
 
   def update
+    @cold_symptom = current_user.cold_symptoms.first
     if @goal.update(goal_params)
       redirect_to @goal, success: t('.success')
     else
