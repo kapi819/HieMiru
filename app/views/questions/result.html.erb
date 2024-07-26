@@ -13,7 +13,11 @@
         </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-auto">
-          <%= link_to 'トップに戻る', root_path, class: 'btn btn-share' %>
+          <% if user_signed_in? %>
+            <%= link_to 'トップに戻る', root_path, class: 'btn btn-share' %>
+          <% else %>
+            <%= render 'shared/auth_buttons' %>
+          <% end %>
         </div>
         <div class="twitter col-auto">
           <%= link_to "https://x.com/share?url=https://portfolio-2-xm41.onrender.com&text=【あなたはどんな冷え性？】%0a%0a#{ @cold_symptom.symptom_title}%0a%0a %23HieMiru %23冷え性", target: '_blank', class: 'btn btn-share' do %>

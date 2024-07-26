@@ -10,9 +10,13 @@
           <div class="sub-chatch mt-10">
             <h4 class="text-start">「冷え診る」は<br>診断からはじまる<br><span class="fw-bolder pink">”冷え性の見える化”</span>で<br>冷えの改善をサポートします。</h4>
             <p class="text-start">※スマホ利用を想定したアプリです。<br>PCでは正常に作動しない場合がございます。</p>
-            <%= render 'shared/auth_buttons' %>
-            <h5 class="text-start">ログインせずに診断機能を</h5>
-            <%= link_to '試してみる', questions_path, class: 'btn btn-success' %><br><br>
+            <% if user_signed_in? %>
+              <%= link_to '診断機能', questions_path, class: 'btn btn-success' %><br><br>
+            <% else %>
+              <%= render 'shared/auth_buttons' %>
+              <h5 class="text-start">ログインせずに診断機能を</h5>
+              <%= link_to '試してみる', questions_path, class: 'btn btn-success' %><br><br>
+            <% end %>
             <h4 class="text-start fw-bolder">冷え診るで出来ること</h4>
           </div>
           <div>
