@@ -1,7 +1,7 @@
 <div class="box">
   <div class="white-box center">
     <%= form_with model: @goal, local: true do |f| %>
-      <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！" %>
+      <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！まずは７日間目標を継続" %>
       <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first %>
 
       <% if current_user.cold_symptoms.present? %>
@@ -34,7 +34,7 @@
       </div>
       <div class="modal-body">
         <p class="modal-text text-start">
-          このページに表示されているQRコードをカメラで読み込んでください。LINE BOTの友達登録が出来、目標の達成状況を、日曜日に通知します。
+          このページに表示されているQRコードをカメラで読み込んでください！LINE BOTの友達登録が出来、目標の達成状況を、日曜日に通知します。
         </p>
           <%= image_tag 'QRcode.png', style: 'max-height: 300px; width: auto;' %>
       </div>

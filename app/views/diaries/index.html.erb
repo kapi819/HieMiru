@@ -12,10 +12,10 @@
                 <div>
                   <%= link_to diary_path(record) do %>
                     <% if record.physical_condition.present? %>
-                      <i class="fa fa-<%= record.physical_condition == 'physical_bad' ? 'frown-o' : record.physical_condition == 'physical_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
+                      <i class="fa fa-<%= record.physical_condition == 'physical_bad' ? 'frown-o' : record.physical_condition == 'physical_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 17px;"></i>
                     <% end %>
                     <% if record.mental_condition.present? %>
-                      <i class="fa fa-<%= record.mental_condition == 'mental_bad' ? 'frown-o' : record.mental_condition == 'mental_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 20px;"></i>
+                      <i class="fa fa-<%= record.mental_condition == 'mental_bad' ? 'frown-o' : record.mental_condition == 'mental_normal' ? 'meh-o' : 'smile-o' %>" aria-hidden="true" style="font-size: 17px;"></i>
                     <% end %>
                   <% end %>
                 </div>
@@ -25,7 +25,7 @@
           <% end %>
           <% unless @today_diary %>
             <%= link_to new_diary_path, class: 'btn btn-primary' do %>
-              <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 新しいエントリを作成
+              <i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 20px;"></i> 今日の記録を作成
             <% end %>
           <% else %>
             <p>本日の記録は既に作成されています。</p>
@@ -36,9 +36,9 @@
         <div class="white-box">
           <div class="container my-4">
             <%= line_chart [
-                            {name: "Body Temperature", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_temperature] }},
-                            {name: "Weight", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.weight] }},
-                            {name: "Body Fat", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_fat] }}
+                            {name: "体温", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_temperature] }},
+                            {name: "体重", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.weight] }},
+                            {name: "体脂肪", data: @diaries.map { |diary| [diary.start_time.strftime("%Y-%m-%d"), diary.body_fat] }}
                           ] %>
           </div>
         </div>

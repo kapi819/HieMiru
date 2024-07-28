@@ -4,20 +4,19 @@
       <div class='col-md-6 mx-2 mx-auto my-4 p-3'>
         <%= image_tag 'logo.png', style: 'max-height: 300px; width: auto;' %>
         <div class="chatches">
-          <div class="main-catch">
-            <h2 class="text-start fw-bolder">健康な毎日は冷え改善から。</h2>
-          </div>
           <div class="sub-chatch mt-10">
-            <h4 class="text-start">「冷え診る」は<br>診断からはじまる<br><span class="fw-bolder pink">”冷え性の見える化”</span>で<br>冷えの改善をサポートします。</h4>
-            <p class="text-start">※スマホ利用を想定したアプリです。<br>PCでは正常に作動しない場合がございます。</p>
+            <h4 class="text-start">「HieMiru」は<br>診断による<span class="fw-bolder blue">”冷え性の見える化”</span>で<br>冷えの改善をサポートします。</h4><br>
             <% if user_signed_in? %>
-              <%= link_to '診断機能', questions_path, class: 'btn btn-success' %><br><br>
+              <%= link_to '診断機能', questions_path, class: 'btn btn-next' %><br><br>
             <% else %>
-              <%= render 'shared/auth_buttons' %>
-              <h5 class="text-start">ログインせずに診断機能を</h5>
-              <%= link_to '試してみる', questions_path, class: 'btn btn-success' %><br><br>
+              <p class="text-center">さっそくログインする</p>
+              <%= render 'shared/auth_buttons' %><br>
+              <p class="text-center">ログインせずに診断機能を</p>
+              <%= link_to '試す', questions_path, class: 'btn btn-next' %><br><br><br>
             <% end %>
-            <h4 class="text-start fw-bolder">冷え診るで出来ること</h4>
+            <h6 class="text-start fw-bolder">
+              HieMiruで出来ること（ログイン後機能は<i class="fa fa-sign-in" aria-hidden="true"></i>）
+            </h6>
           </div>
           <div>
         </div>
@@ -28,22 +27,24 @@
             診断機能
             </dt>
             <p class="text-start">
-              なんかこの頃不調が続いていて…。それ、実は冷え性かも！まずは、冷え性タイプ診断を行なって、自分の冷え性のタイプを知りましょう！
+              なんかこの頃不調が続いていて…。それ、実は冷え性かも！まずは、冷え性タイプ診断を行なって、自分の冷え性のタイプを知りましょう。
             </p>
           </div>
           <div class="white-box center">
             <dt class="text-start fw-semibold">
               <i class="fa-regular fa-circle"></i>
             記録機能
+              <i class="fa fa-sign-in ms-3" aria-hidden="true"></i>
             </dt>
             <p class="text-start">
-              冷え性のタイプを知ったら、自分のタイプに応じた冷え性対策を、7日間を目標に行おう！ワンタップで記録が出来ます。
+              冷え性のタイプを知ったら、自分のタイプに応じた冷え性対策を参考にして、7日間を目標に対策を行おう！ワンタップで記録が出来ます。
             </p>
           </div>
           <div class="white-box center">
             <dt class="text-start fw-semibold">
               <i class="fa-solid fa-chart-pie"></i>
             分析機能
+              <i class="fa fa-sign-in ms-3" aria-hidden="true"></i>
             </dt>
             <p class="text-start">
               冷え性の改善の変化を分析しよう！カレンダーと棒グラフを用いて、改善の記録を振り返ることが出来ます。
@@ -53,6 +54,7 @@
             <dt class="text-start fw-semibold">
               <i class="fa-brands fa-line"></i>
             一週間の振り返りレポート
+              <i class="fa fa-sign-in ms-3" aria-hidden="true"></i>
             </dt>
             <p class="text-start">
               毎週月曜日に、あなたの一週間の目標達成のレポートをLINEに送ります。<br>※LINE通知を受け取るにはLINEログインに加え、公式アカウントの友達登録が必要です。

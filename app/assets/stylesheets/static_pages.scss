@@ -20,7 +20,7 @@
 }
 
 .tabbar ul {
-  display: flex; /* フレックスボックスを使用 */
+  display: flex;
   flex-direction: row;
   width: 100%;
   padding: 0;
@@ -38,17 +38,24 @@
   padding: 0;
 }
 
+.layout-container {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
 .footer-bottom {
   display: flex;
-  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
   width: 100%;
   max-width: 100%;
   background-color: #CCF0FB;
-  position: fixed;
-  bottom: 0;
   overflow: hidden;
-  text-align: left;
   z-index: 10;
+  font-size: 12px;
+  height: 40px;
 }
 
 .menu-item {
@@ -64,8 +71,8 @@
   padding: 15px 0 5px 0;
 }
 
-.pink {
-  color: #FF5192;
+.blue {
+  color: #1e90ff;
 }
 
 @media (max-width: 991px) {
