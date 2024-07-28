@@ -11,7 +11,7 @@ document.addEventListener('turbo:load', () => {
 
   function drawProgress(count) {
     const progress = (count % 7) / 7;
-    const radius = 180;
+    const radius = 150;
     const lineWidth = 20;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
