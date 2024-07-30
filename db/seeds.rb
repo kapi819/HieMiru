@@ -13,7 +13,7 @@ questions = Question.create!([
                                { question_title: 'いつもの手足の冷える状態は？' },
                                { question_title: 'いつもの汗のかき方は？' },
                                { question_title: 'いつもの食事の量は？' },
-                               { question_title: '寒い場所にいるとき、どこに一番冷えを感じる？' },
+                               { question_title: '寒い場所の時、どこに一番冷えを感じる？' },
                                { question_title: '冷えたときに起こりやすい症状は？' },
                                { question_title: 'わきで測る体温は？' }
                              ])
@@ -58,13 +58,13 @@ user2 = User.create!(
 ColdSymptom.create!([
                       { symptom_type: 0,
                         symptom_title: '手足の末端が冷える典型的なタイプの冷え性',
-                        symptom_body: 'ストレスによる自律神経の乱れ・運動不足による筋肉量の低下・過度なダイエットによる栄養不足を原因として、体の中で熱を充分に作ることができていないことが出来ない状態です。',
+                        symptom_body: 'ストレスによる自律神経の乱れ・運動不足による筋肉量の低下・過度なダイエットによる栄養不足を原因として、体の中で熱を充分に作ることが出来ていません。',
                         solution: '肉や卵等のタンパク質の積極的な摂取',
                         image_url: 'coldsymptom00.png',
                         user: user1 },
                       { symptom_type: 1,
                         symptom_title: '体の内部（内臓）が冷えるタイプの冷え性',
-                        symptom_body: '胃腸が弱い・暴飲暴食・ストレスで胃腸が弱っていることを原因として、体の中で熱を充分に作ることができていないことが出来ない状態です。',
+                        symptom_body: '胃腸が弱い・暴飲暴食・ストレスで胃腸が弱っていることを原因として、体の中で熱を充分に作ることが出来ていません。',
                         solution: '自分のペースでできる運動（ランニング、ウォーキング）',
                         image_url: 'coldsymptom01.png',
                         user: user1 },
@@ -76,7 +76,7 @@ ColdSymptom.create!([
                         user: user2 },
                       { symptom_type: 3,
                         symptom_title: '常に低体温で1年中寒さを感じるタイプの冷え性',
-                        symptom_body: '乱れた生活リズム・寝不足や過労・過度なストレスを原因として、体全体の機能が低下し、体の中で熱を充分に作ることができていないことが出来ない状態です。',
+                        symptom_body: '乱れた生活リズム・寝不足や過労・過度なストレスを原因として、体全体の機能が低下し、体の中で熱を充分に作ることが出来ていません。',
                         solution: '11時までの睡眠による生活習慣の改善',
                         image_url: 'coldsymptom03.png',
                         user: user2 }
