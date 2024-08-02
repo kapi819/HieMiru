@@ -70,4 +70,4 @@
 [画面遷移図](https://www.figma.com/file/wqLqj8RVZpQrRhGesPe8Ec/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA?type=design&node-id=0%3A1&mode=design&t=hjroMIFOay3tew5V-1)
 
 # ER図
-[![Image from Gyazo](https://i.gyazo.com/1ee3b58a27d8a9074fbdc7690a48e930.png)](https://gyazo.com/1ee3b58a27d8a9074fbdc7690a48e930)
+[![Image from Gyazo](https://i.gyazo.com/44de871af6b7e09fe4076031b607ee2f.png)](https://gyazo.com/44de871af6b7e09fe4076031b607ee2f)
