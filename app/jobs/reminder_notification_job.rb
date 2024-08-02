@@ -8,20 +8,18 @@ class ReminderNotificationJob < ApplicationJob
 
   def perform
     User.find_each do |user|
-      # 全ユーザーを対象にリマインダー通知を送信する
       next unless user.goals.exists?
 
-      # ユーザーが目標を持っているかチェック
       reminder_message = generate_reminder_message(user)
-      # 通知メッセージをカスタマイズ
       LineNotifyService.send_message(user.uid, reminder_message) if user.uid.present?
-      # LINE通知サービスを使用してリマインダーを送信
     end
   end
 
   private
 
   def generate_reminder_message(user)
-    "こんにちは、#{user.name}さん。今週のタスクを忘れずにチェックしてくださいね！"
+    user.goals.each do |goal|
+      "おはようございます。現在、#{goal.goal_body}を、#{goal.count}回達成しています！来週も継続して目標を達成しましょう。"
+    end
   end
 end
