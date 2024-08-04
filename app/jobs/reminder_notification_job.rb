@@ -18,8 +18,6 @@ class ReminderNotificationJob < ApplicationJob
   private
 
   def generate_reminder_message(user)
-    user.goals.each do |goal|
-      "おはようございます。現在、#{goal.goal_body}を、#{goal.count}回達成しています！来週も継続して目標を達成しましょう。"
-    end
+    "こんにちは。現在、#{user.goals.goal_body}を、#{user.goals.count}回達成しています！来週も継続して目標を達成しましょう。"
   end
 end
