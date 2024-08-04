@@ -1,7 +1,10 @@
 <div class="box">
   <div class="white-box center">
     <%= form_with model: @goal, local: true do |f| %>
-      <%= f.label :goal_body, "冷え性を改善するための目標を設定しましょう！まずは７日間目標を継続" %>
+      <%= f.label :goal_body do %>
+        冷え性を改善するための目標を設定しましょう！<br>
+        まずは７日間目標を継続
+      <% end %>
       <%= f.text_area :goal_body, class: "form-control mb-3", row: "4", placeholder: current_user.cold_symptoms.first %>
 
       <% if current_user.cold_symptoms.present? %>
