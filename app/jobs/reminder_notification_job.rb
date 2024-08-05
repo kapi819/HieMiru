@@ -18,6 +18,10 @@ class ReminderNotificationJob < ApplicationJob
   private
 
   def generate_reminder_message(user)
-    "こんにちは。現在、#{user.goals.goal_body}を、#{user.goals.count}回達成しています！来週も継続して目標を達成しましょう。"
+    goals_summary = user.goals.map do |goal|
+      "目標: #{goal.goal_body}, 達成回数: #{goal.count}"
+    end.join("\n")
+    
+    "こんにちは、#{user.name}さん。現在、以下の目標を達成しています！\n#{goals_summary}\n来週も継続して目標を達成しましょう。"
   end
 end
