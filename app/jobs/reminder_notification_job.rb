@@ -22,6 +22,6 @@ class ReminderNotificationJob < ApplicationJob
       "目標: #{goal.goal_body}, 達成回数: #{goal.count}"
     end.join("\n")
     
-    "こんにちは、#{user.name}さん。現在、以下の目標を達成しています！\n#{goals_summary}\n来週も継続して目標を達成しましょう。"
+    "おはようございます！\n現在の目標達成状況をお伝えします。\n#{goals_summary}\n来週も継続して目標を達成しましょう。"
   end
 end
