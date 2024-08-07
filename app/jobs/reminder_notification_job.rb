@@ -21,7 +21,6 @@ class ReminderNotificationJob < ApplicationJob
     goals_summary = user.goals.map do |goal|
       "目標: #{goal.goal_body}, 達成回数: #{goal.count}"
     end.join("\n")
-    
     "おはようございます！\n現在の目標達成状況をお伝えします。\n#{goals_summary}\n来週も継続して目標を達成しましょう。"
   end
 end
