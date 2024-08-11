@@ -46,6 +46,11 @@
 |[![Image from Gyazo](https://i.gyazo.com/156a9d49f23dd3e82fab580cdedb03c7.gif)](https://gyazo.com/156a9d49f23dd3e82fab580cdedb03c7)|[![Image from Gyazo](https://i.gyazo.com/f5718476a9ce1535e9290d9da9ba2541.gif)](https://gyazo.com/f5718476a9ce1535e9290d9da9ba2541)|
 |一日一回ワンタップで目標達成の記録が可能です。|基礎体温・体重・体脂肪・体調・気分を記録し、カレンダーや棒グラフで確認することができます。|
 
+|通知設定機能|通知表示画面|
+|:-------------|:-------------|
+|[![Image from Gyazo](https://i.gyazo.com/714bae5046ac923a1bee2bed9c6c1362.gif)](https://gyazo.com/714bae5046ac923a1bee2bed9c6c1362)|[![Image from Gyazo](https://i.gyazo.com/39fe88940c4dca24ea06b4d184d75f28.png)](https://gyazo.com/39fe88940c4dca24ea06b4d184d75f28)|
+|目標を設定する画面にて通知に必要なLINE友達追加の設定を行います。|実際の通知画面です。|
+
 ### その他機能：
 - **シェアー機能：**
   - 冷え性診断の結果をxシェアーすることができる
