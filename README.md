@@ -38,17 +38,17 @@
 ## 機能一覧
 |ログイン/ログアウト機能|冷え性診断機能|
 |:-------------|:-------------|
-|[![Image from Gyazo](https://i.gyazo.com/2b88d82545c2750c1c2f7de4579ce470.gif)](https://gyazo.com/2b88d82545c2750c1c2f7de4579ce470)|[![Image from Gyazo](https://i.gyazo.com/4df889477bcc691894b45af0d9b8404f.gif)](https://gyazo.com/4df889477bcc691894b45af0d9b8404f)|
+|<a href="https://gyazo.com/2b88d82545c2750c1c2f7de4579ce470"><img src="https://i.gyazo.com/2b88d82545c2750c1c2f7de4579ce470.gif" alt="Image from Gyazo" width="300"/></a>|<a href="https://gyazo.com/4df889477bcc691894b45af0d9b8404f"><img src="https://i.gyazo.com/4df889477bcc691894b45af0d9b8404f.gif" alt="Image from Gyazo" width="300"/></a>|
 |ワンタップでLINEログインが可能です。|冷えに関する質問から、ユーザーの冷え性の型を表示します。|
 
 |目標記録機能|体調記録機能|
 |:-------------|:-------------|
-|[![Image from Gyazo](https://i.gyazo.com/156a9d49f23dd3e82fab580cdedb03c7.gif)](https://gyazo.com/156a9d49f23dd3e82fab580cdedb03c7)|[![Image from Gyazo](https://i.gyazo.com/f5718476a9ce1535e9290d9da9ba2541.gif)](https://gyazo.com/f5718476a9ce1535e9290d9da9ba2541)|
+|<a href="https://gyazo.com/156a9d49f23dd3e82fab580cdedb03c7"><img src="https://i.gyazo.com/156a9d49f23dd3e82fab580cdedb03c7.gif" alt="Image from Gyazo" width="300"/></a>|<a href="https://gyazo.com/3eb254283f211ef0008baa2f1b012414"><img src="https://i.gyazo.com/3eb254283f211ef0008baa2f1b012414.gif" alt="Image from Gyazo" width="300"/></a>|
 |一日一回ワンタップで目標達成の記録が可能です。|基礎体温・体重・体脂肪・体調・気分を記録し、カレンダーや棒グラフで確認することができます。|
 
 |通知設定機能|通知表示画面|
 |:-------------|:-------------|
-|[![Image from Gyazo](https://i.gyazo.com/714bae5046ac923a1bee2bed9c6c1362.gif)](https://gyazo.com/714bae5046ac923a1bee2bed9c6c1362)|[![Image from Gyazo](https://i.gyazo.com/5f78314465d9e6188d6e724b4cf659c1.png)](https://gyazo.com/5f78314465d9e6188d6e724b4cf659c1)|
+|<a href="https://gyazo.com/714bae5046ac923a1bee2bed9c6c1362"><img src="https://i.gyazo.com/714bae5046ac923a1bee2bed9c6c1362.gif" alt="Image from Gyazo" width="300"/></a>|<a href="https://gyazo.com/5f78314465d9e6188d6e724b4cf659c1"><img src="https://i.gyazo.com/5f78314465d9e6188d6e724b4cf659c1.png" alt="Image from Gyazo" width="300"/></a>|
 |目標を設定する画面にて通知に必要なLINE友達追加の設定を行います。|実際の通知画面です。|
 
 ### その他機能：
